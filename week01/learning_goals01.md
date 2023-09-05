@@ -3,6 +3,11 @@
 ## Learning Goals
 
 ### I can explain the role that the network core plays vs the network edge.
+The network edge describes all of the end users and the edge router that connects them to the network core. The purpose of this first link in the internet is to connect users and applications from a subnet to the greater internet. This is primarily achieved by using a local base station or link layer switch to connect a variety of physically close devices to an edge router.
+
+All of the devices and connections between them in the edge are hyper local and usually consolidated to one household or enterprise. These devices are ultimately connected to the edge router which is the access point that links the network edge to the network core. All of the local devices connected in a subnet are ultimately linked to the core via an edge router.
+
+The network core consists of all of the data moving between subnets past the edge router. Edge routers ultimately communicate with local ISPs which move data to higher tiers of ISPs. Unlike the edge, the core is responsible for moving data over much larger distances at greater speeds.
 
 ### I can compare different physical technologies used in access networks, including dial-up, DSL, cable, fiber, and wireless.
 
@@ -32,6 +37,7 @@
 
 
 ### I can use queuing, transmission, and propagation delays to calculate total packet delay, I can describe the underlying causes for these delays, and I can propose ways to improve packet delay on a network.
+
 
 ### I can describe the differences between packet-switched networks and circuit-switched networks.
 
