@@ -4,6 +4,13 @@
 
 ### I can explain the HTTP message format, including the common fields.
 
+The HTTP message format defines the type and delivery method of and HTTP request. The infomation must be structured according to specifications defined by the IETF. Sizes of HTTP requests can vary.
+
+There are two types of HTTP message formats, request messages and response messages.
+
+#### Request message format
+####  message format
+
 ### I can explain the difference between HTTP GET and POST requests and why you would use each.
 
 ### I can explain what CONDITIONAL GET requests are, what they look like, and what problem they solve.
