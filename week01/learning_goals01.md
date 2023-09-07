@@ -29,7 +29,7 @@
 
 **Wireless**
 - 5G Fixed Wireless requires no cabling from CO to homes. Internet is cent via beam-forming technology from a provider's base station to a modem in the home.
-
+- Cabling is often failure prone and costly so avoiding it is good.
 
 ### I can use queuing, transmission, and propagation delays to calculate total packet delay, I can describe the underlying causes for these delays, and I can propose ways to improve packet delay on a network.
 
