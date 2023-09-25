@@ -1,4 +1,4 @@
-# Week One: The Internet
+# Week Two: The Application Layer
 
 ## Lab: Wireshark Introduction
 
