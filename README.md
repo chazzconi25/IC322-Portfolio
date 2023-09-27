@@ -1,11 +1,11 @@
-# MIDN 2/C Francesconi's IC322-Portfolio
+# MIDN 2/C Francesconi's <s>IC322-Portfolio</s> Markdown Hell
 
 I'm maintaining this Portfolio for IC322: Computer Networks. If you're visiting, you're *not* welcome! Do feel free to leave feedback by opening an issue or submitting a merge request.
 
 Currently in debt TWO weeks. I will pay it in time. (ironically this is a good thing)
 
 
-1. [Week One: The Internet](/week01/)
+1. [Week One: The Internet](/week01/README.md)
 2. [Week Two: The Application Layer](/week02/)
 3. [Week Three: The Application Layer (Other than HTTP)](/week03/)
 4. [Week Four: Transport Layer: TCP and UDP](/week04/)
