@@ -1,8 +1,12 @@
-# Week Three: The Application Layer (Other than HTTP)
+# Week Four: Transport Layer: TCP and UDP
 
 ## Learning Goals
 
-### I can explain how a the DNS system uses local, authoritative, TLD, and root servers to translate a domain name into an IP address.
-### I can explain the role of each of the following DNS record types: A, AAAA, CNAME, MX, NS.
-### I can explain the role of the SMTP, IMAP, and POP protocols in the email system.
-### I know what each of the following tools are used for: nslookup, dig, whois.
+### I can explain how TCP and UDP multiplex messages between processes using sockets.
+
+### I can explain the difference between TCP and UDP, including the services they provide and scenarios each is better suited to.
+
+### I can explain how and why the following mechanisms are used and which are used in TCP): sequence numbers, duplicate ACKs, timers, pipelining, go-back-N, selective repeat, sliding window.
+
+### I can explain how these mechanisms are used to solve dropped packets, out-of-order packets, corrupted/dropped acknowledgements, and duplicate packets/acknowledgements.
+
