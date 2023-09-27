@@ -27,8 +27,8 @@ To identify users the websites must use cookies where a number is assigned to a 
 ***
 ### R13: Describe how Web caching can reduce the delay in receiving a requested object. Will Web caching reduce the delay for all objects requested by a user or for only some of the objects? Why?
 Web caching relies on a client first requesting Objects from the web cache before requesting them from the server they are stored. The web cache has a higher speed connection than the server where the Object exsists. If there is a copy in the cache, requesting and recieving the Object from the cach is reduces delay by increasing the speed between client and server and reducing the traffic on an access link. This is not true for all objects however because if there isn't a copy of the object already existing in the server, the cache will then have to request the object from the acual server, copy it, and serve it to the client.
-
 ***
+
 ### R14: Telnet into a Web server and send a multiline request message. Include in the request message the If-modified-since: header line to force a response message with the 304 Not Modified status code.
 This question is impossible. [Click here to see what I typed into telent and what I got back. Spent an enourmous amount of time on this and now I'm just pissed off.](/ihatetelnet.txt)
 ***
