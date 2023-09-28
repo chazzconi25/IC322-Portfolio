@@ -3,15 +3,20 @@
 ## Lab: Wireshark HTTP
 
 ### Introduction
+
 ### Collaboration
 I asked a classmate about one of the questions on this lab. They were not helpful.
 ### Process
-I used the instructions in the lab linked [here](https://view.officeapps.live.com/op/view.aspx?src=http%3A%2F%2Fwww-net.cs.umass.edu%2Fwireshark-labs%2FWireshark_HTTP_v8.1.doc&wdOrigin=BROWSELINK).
+I used the instructions in the lab linked [here](https://gaia.cs.umass.edu/kurose_ross/wireshark.php).
 I used the trace file however because everything about this course doesn't work in actual application and is completely broken and frustrating. Never have I seen so much red just trying to get an assignment done. I am extremly stressed and angry. I hate this.
 
 Trace files used:<br>
 - http-wireshark-trace2-1
+- http-wireshark-trace3-1
+- http-wireshark-trace4-1
+- http-wireshark-trace5-1
 
+>No I'm not going to link them here. you can find them yourself if you're so intrested. Just go to the link in the process section.
 ### Questions
 #### The Basic HTTP GET/response interaction
 ***

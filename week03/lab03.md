@@ -1,111 +1,164 @@
-# Week Two: The Application Layer
+# Week Three: The Application Layer (Other than HTTP)
 
-## Lab: Wireshark HTTP
+## Lab: Wireshark DNS
 
 ### Introduction
+The objective of this lab was to make DNS requests using nslookup and via the browser and view them in Wireshark. In Wireshark the DNS queries and responses could be dissected to produce useful information about the type of request, how it was made, and what servers respoded with what information.
 ### Collaboration
-I asked a classmate about one of the questions on this lab. They were not helpful.
+No collaboration.
 ### Process
-I used the instructions in the lab linked [here](https://view.officeapps.live.com/op/view.aspx?src=http%3A%2F%2Fwww-net.cs.umass.edu%2Fwireshark-labs%2FWireshark_HTTP_v8.1.doc&wdOrigin=BROWSELINK).
-I used the trace file however because everything about this course doesn't work in actual application and is completely broken and frustrating. Never have I seen so much red just trying to get an assignment done. I am extremly stressed and angry. I hate this.
-
-Trace files used:<br>
-- http-wireshark-trace2-1
+I used the instructions in the lab linked [here](https://gaia.cs.umass.edu/kurose_ross/wireshark.php).
+I didn't have to use a trace file which was actually quite refreshing and I actually enjoyed doing the lab.
 
 ### Questions
-#### The Basic HTTP GET/response interaction
+#### nslookup
 ***
-1. Is your browser running HTTP version 1.0, 1.1, or 2? What version of HTTP is the server running?
-- Both the server and my browser are running HTTP version 1.1
+1. Run nslookup to obtain the IP address of the web server for the Indian Institute of Technology in Bombay, India: www.iitb.ac.in. What is the IP address of www.iitb.ac.in
+```console
+~$ nslookup www.iitb.ac.in
+Server:         10.1.74.10
+Address:        10.1.74.10#53 
 
-2. What languages (if any) does your browser indicate that it can accept to the server?
-- en-US or en
-
-3. What is the IP address of your computer? What is the IP address of the gaia.cs.umass.edu server?
-- The IP of the computer the trace is from is 10.0.0.44 and the IP of the server is 128.119.245.12
-
-4. What is the status code returned from the server to your browser?
--  The status code returned was 200 OK for the html file.
-
-5. When was the HTML file that you are retrieving last modified at the server?
-```
-Last-Modified: Sat, 30 Jan 2021 06:59:02 GMT\r\n
-```
-6. How many bytes of content are being returned to your browser?
-- 371 bytes
-```
-Content-Length: 371\r\n
+Non-authoritative answer:
+Name:   www.iitb.ac.in
+Address: 103.21.124.10 <---- this is the IPv4 Address.
 ```
 
-7. By inspecting the raw data in the packet content window, do you see any headers within the data that are not displayed in the packet-listing window? If so, name one.
-- I do not. Another student told me that the acknoledgment number is there but that is a part of TCP which is on a different layer than HTTP.
+2. What is the IP address of the DNS server that provided the answer to your nslookup command in question 1 above?
+```console
+~$ nslookup www.iitb.ac.in
+Server:         10.1.74.10 <---- this is the IPv4 Address of the DNS server.
+Address:        10.1.74.10#53   <---- This one includes the port number for DNS, 53. NEATO!
 
-#### The HTTP CONDITIONAL GET/response interaction
+Non-authoritative answer:
+Name:   www.iitb.ac.in
+Address: 103.21.124.10 
+```
+
+3. Did the answer to your nslookup command in question 1 above come from an authoritative or non-authoritative server?
+- It came from a non authoritative server. I know this because it lists the answer under the heading ```Non-authoritative answer:```.
+
+4. Use the nslookup command to determine the name of the authoritative name server for the iit.ac.in domain. What is that name? (If there are more than one authoritative servers, what is the name of the first authoritative server returned by nslookup)? If you had to find the IP address of that authoritative name server, how would you do so?
+```console
+~$ nslookup -type=NS www.iitb.ac.in
+Server:         10.1.74.10
+Address:        10.1.74.10#53
+
+Non-authoritative answer:
+*** Can't find www.iitb.ac.in: No answer
+
+Authoritative answers can be found from:
+iitb.ac.in
+        origin = dns1.iitb.ac.in <------- Authoritative name server name
+        mail addr = postmaster.iitb.ac.in
+        serial = 2013071001
+        refresh = 16384
+        retry = 2048
+        expire = 1048576
+        minimum = 3960
+```
+
+#### The DNS cache on your computer
 ***
-8. Inspect the contents of the first HTTP GET request from your browser to the server. Do you see an “IF-MODIFIED-SINCE” line in the HTTP GET?
-- No.
+>This section had no questions. That means I didn't have to do it! Just kidding. I may hate this class but I really enjoy the material.
 
-9. Inspect the contents of the server response. Did the server explicitly return the contents of the file? How can you tell?
-- The server did return the contents of the file, I can tell becauese I can see the data attached to the response after the header.
-```html
-<html><br>
-    Congratulations again!  Now you've downloaded the file lab2-2.html. <br>
-    This file's last modification date will not change.  <br>
-    Thus  if you download this multiple times on your browser, a complete copy <br>
-    will only be sent once by the server due to the inclusion of the IN-MODIFIED-SINCE <br>
-    field in your browser's HTTP GET request to the server.<br>
-<html>
-
-```
-
-10. Now inspect the contents of the second HTTP GET request from your browser to the server. Do you see an “IF-MODIFIED-SINCE:” line in the HTTP GET6? If so, what information follows the “IF-MODIFIED-SINCE:” header?
-- Yes, this is what wireshark displays:
-```
-If-Modified-Since: Sat, 30 Jan 2021 06:59:02 GMT\r\n
-```
-
-11. What is the HTTP status code and phrase returned from the server in response to this second HTTP GET? Did the server explicitly return the contents of the file? Explain
-```
-HTTP/1.1 304 Not Modified\r\n
-```
-- The server did not return the HTML file explicitly because the file hasn't been modified since it was last requsted. Hence the 304 response. I can also tell because the HTML code is not attached as data and this packet is significantly shorter than the inital response. The inital response was 796 bytes and the second was 305 bytes. 
-
-#### Retrieving Long Documents
+#### Tracing DNS with Wireshark
 ***
-12. How many HTTP GET request messages did your browser send? Which packet number in the trace contains the GET message for the Bill or Rights?
-- The browser sent one HTTP GET request.
-- The GET message for the Bill of Rights is in the first packet, frame 26.
+5. Locate the first DNS query message resolving the name gaia.cs.umass.edu. What is the packet number in the trace for the DNS query message? Is this query message sent over UDP or TCP?
+- The packet number is 35. This number is made up for the context of this single wire shark capture I made myself so I don't know why you want it. The query message is sent over ```User Datagram Protocol, Src Port: 61474, Dst Port: 53``` aka UDP.
 
-13. Which packet number in the trace contains the status code and phrase associated with the response to the HTTP GET request?
-- The response with the code is in the first packet of the response, frame 32. 
+6. Now locate the corresponding DNS response to the initial DNS query. What is the packet number in the trace for the DNS response message? Is this response message received via UDP or TCP?
+- The packet number is 36. The response is recieved via UDP.
 
-14. What is the status code and phrase in the response?
+7. What is the destination port for the DNS query message? What is the source port of the DNS response message?
+Query: ```Destination Port: 53``` <br>
+Response: ```Source Port: 53```
+
+8. To what IP address is the DNS query message sent?<br>
+```10.1.74.10``` This is the IP of my local DNS.
+9. Examine the DNS query message. How many “questions” does this DNS message contain? How many “answers” answers does it contain?
+- One question or "Query" is sent, ```gaia.cs.umass.edu: type A, class IN```
+
+10. Examine the DNS response message to the initial query message. How many “questions” does this DNS message contain? How many “answers” answers does it contain?
+- Once again one query is sent which is the same from the query is sent.
+- The response contains one Answer which contains the IP address requested ```gaia.cs.umass.edu: type A, class IN, addr 128.119.245.12```
+
+11. The web page for the base file http://gaia.cs.umass.edu/kurose_ross/ references the image object http://gaia.cs.umass.edu/kurose_ross/header_graphic_book_8E_2.jpg , which, like the base webpage, is on gaia.cs.umass.edu. What is the packet number in the trace for the initial HTTP GET request for the base file http://gaia.cs.umass.edu/kurose_ross/?
+What is the packet number in the trace of the DNS query made to resolve gaia.cs.umass.edu so that this initial HTTP request can be sent to the gaia.cs.umass.edu IP address? 
+What is the packet number in the trace of the received DNS response? 
+What is the packet number in the trace for the HTTP GET request for the image object http://gaia.cs.umass.edu/kurose_ross/header_graphic_book_8E2.jpg? 
+What is the packet number in the DNS query made to resolve gaia.cs.umass.edu so that this second HTTP request can be sent to the gaia.cs.umass.edu IP address? 
+Discuss how DNS caching affects the answer to this last question.
+- The packet number of the GET request is 41.
+- The original DNS query number is 35.
+- The DNS response number is 36.
+- The packet number for the jpg GET request is 134.
+- There isn't a second DNS resolution because the domain has already been resolved and stored in the cache
+
+>NOT COOL. This is like 20billion questions in one question what the hek.
+12. What is the destination port for the DNS query message? What is the source port of the DNS response message?
+- The query destination port is 53.
+- The response source port is 53.
+
+13. To what IP address is the DNS query message sent? Is this the IP address of your default local DNS server?
+- The destination address is 10.1.74.10
 ```
-HTTP/1.1 200 OK\r\n
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : academy.usna.edu
+   Description . . . . . . . . . . . : Realtek USB GbE Family Controller
+   Physical Address. . . . . . . . . : 48-9E-BD-22-12-1E
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   IPv4 Address. . . . . . . . . . . : 10.16.146.82(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.254.0
+   Lease Obtained. . . . . . . . . . : Wednesday, September 27, 2023 20:13:50
+   Lease Expires . . . . . . . . . . : Thursday, October 5, 2023 20:13:47
+   Default Gateway . . . . . . . . . : 10.16.146.1
+   DHCP Server . . . . . . . . . . . : 10.1.74.10
+   DNS Servers . . . . . . . . . . . : 10.1.74.10 <--ipconfig return proves it is my default DNS server.
+   NetBIOS over Tcpip. . . . . . . . : Enabled
 ```
 
-15. How many data-containing TCP segments were needed to carry the single HTTP response and the text of the Bill of Rights?
-- Four
+14. Examine the DNS query message. What “Type” of DNS query is it? Does the query message contain any “answers”?
+- The request is asking for an IP address so it is a type A request.
+- The query message has no answers.
 
-#### HTML Documents with Embedded Object
-16. How many HTTP GET request messages did your browser send? To which Internet addresses were these GET requests sent?
+15. Examine the DNS response message to the query message. How many “questions” does this DNS response message contain? How many “answers”?
+- See answer 9.
 
-- The browser sent three HTTP GET request messages. The addresses are listed below.
-    - http://gaia.cs.umass.edu/wireshark-labs/HTTP-wireshark-file4.html
-    - http://gaia.cs.umass.edu/pearson.png
-    - http://kurose.cslash.net/8E_cover_small.jpg
+16. To what IP address is the DNS query message sent? Is this the IP address of your default local DNS server?
+- The DNS query is sent to 10.1.74.10.
 
-17. Can you tell whether your browser downloaded the two images serially, or whether they were downloaded from the two web sites in parallel? Explain.
-- I think the browser downloaded the images serially because the first package is requested at time 3.072335 and it is returned at time 3.092770. The time of the second request is 3.309908 with a response at time 3.451822. This sequential timing leads me to believe the downloads happen serially.
+17. Examine the DNS query message. How many questions does the query have? Does the query message contain any “answers”?
+- The message has one question and no answers.
 
-#### HTTP Authentication
-***
-18. What is the server’s response (status code and phrase) in response to the initial HTTP GET message from your browser?
+18. Examine the DNS response message. How many answers does the response have? What information is contained in the answers? How many additional resource records are returned? What additional information is included in these additional resource records?
+- The response has Three answers with three dns servers the additional information is listed below with the tuples of each record listed.
 ```
-HTTP/1.1 401 Unauthorized\r\n
+Answers
+    umass.edu: type NS, class IN, ns ns1.umass.edu
+        Name: umass.edu
+        Type: NS (authoritative Name Server) (2)
+        Class: IN (0x0001)
+        Time to live: 3581 (59 minutes, 41 seconds)
+        Data length: 6
+        Name Server: ns1.umass.edu
+    umass.edu: type NS, class IN, ns ns3.umass.edu
+        Name: umass.edu
+        Type: NS (authoritative Name Server) (2)
+        Class: IN (0x0001)
+        Time to live: 3581 (59 minutes, 41 seconds)
+        Data length: 6
+        Name Server: ns3.umass.edu
+    umass.edu: type NS, class IN, ns ns2.umass.edu
+        Name: umass.edu
+        Type: NS (authoritative Name Server) (2)
+        Class: IN (0x0001)
+        Time to live: 3581 (59 minutes, 41 seconds)
+        Data length: 6
+        Name Server: ns2.umass.edu
+[Request In: 34]
+[Time: 0.001067000 seconds]
 ```
-19. When your browser’s sends the HTTP GET message for the second time, what new field is included in the HTTP GET message?
-```
-Authorization: Basic d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=\r\n
-```
-- Wireshark alsow included this: Credentials: wireshark-students:network
+
