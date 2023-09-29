@@ -3,7 +3,7 @@
 ## Lab: TCP
 
 ### Introduction
-
+In this lab I examined some TCP packets and observed flag values to identify specifics about the connection and how the users wer communicating.
 ### Collaboration
 I did not collaborate on this lab.
 ### Process
@@ -13,11 +13,27 @@ I used the instructions in the lab linked [here](http://gaia.cs.umass.edu/kurose
 - No questions for this section
 #### A first look at the captured trace
 1. What is the IP address and TCP port number used by the client computer (source) that is transferring the alice.txt file to gaia.cs.umass.edu? To answer this question, it’s probably easiest to select an HTTP message and explore the details of the TCP packet used to carry this HTTP message, using the “details of the selected packet header window” (refer to Figure 2 in the “Getting Started with Wireshark” Lab if you’re uncertain about the Wireshark windows).
+- The source IP is 192.168.86.68
+```
+Source Port: 55639
+```
 
 2. What is the IP address of gaia.cs.umass.edu? On what port number is it sending and receiving TCP segments for this connection?
-
+- The IP addresss of gaia.cs.umass.edu is 128.119.245.12
+```
+Source Port: 80 <----------- Receiving TCP segments
+Destination Port: 55639 <--- Sending TCP segments
+```
 #### TCP Basics
-3. What is the sequence number of the TCP SYN segment that is used to initiate the TCP connection between the client computer and gaia.cs.umass.edu? (Note: this is the “raw” sequence number carried in the TCP segment itself; it is NOT the packet # in the “No.” column in the Wireshark window. Remember there is no such thing as a “packet number” in TCP or UDP; as you know, there are sequence numbers in TCP and that’s what we’re after here. Also note that this is not the relative sequence number with respect to the starting sequence number of this TCP session.). What is it in this TCP segment that identifies the segment as a SYN segment? Will the TCP receiver in this session be able to use Selective Acknowledgments (allowing TCP to function a bit more like a “selective repeat” receiver, see section 3.4.5 in the text)?
+3. What is the sequence number of the TCP SYN segment that is used to initiate the TCP connection between the client computer and gaia.cs.umass.edu? What is it in this TCP segment that identifies the segment as a SYN segment? Will the TCP receiver in this session be able to use Selective Acknowledgments (allowing TCP to function a bit more like a “selective repeat” receiver, see section 3.4.5 in the text)?
+```
+Sequence Number: 0    (relative sequence number) <-- sequence #
+Flags: 0x002 (SYN)
+    /* 8 lines of flags ommitted */
+    .... .... ..1. = Syn: Set <-- SYN flag identifies as SYN segment
+    .... ...0 .... = Acknowledgment: Not set 
+```
+- No it will not be able to use selective acknoledgment because it is not set as seen in the last line above.
 
 4. What is the sequence number of the SYNACK segment sent by gaia.cs.umass.edu to the client computer in reply to the SYN? What is it in the segment that identifies the segment as a SYNACK segment? What is the value of the Acknowledgement field in the SYNACK segment? How did gaia.cs.umass.edu determine that value?
 
