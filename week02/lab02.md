@@ -113,4 +113,4 @@ HTTP/1.1 401 Unauthorized\r\n
 ```
 Authorization: Basic d2lyZXNoYXJrLXN0dWRlbnRzOm5ldHdvcms=\r\n
 ```
-- Wireshark alsow included this: Credentials: wireshark-students:network
+- Wireshark also included this: Credentials: wireshark-students:network

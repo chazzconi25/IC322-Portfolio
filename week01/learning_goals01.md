@@ -69,10 +69,10 @@ Router A --Link  from A to B---> Router B
 Router A receives two packets at the same time and is linked to Router B. The first packet will experience no queuing delay and immediately starts experiencing transmission delay as it is processed Router A to be sent on the link to Router B. The second packet waits and incurs queuing delay during this time. When the first packet is finished transmitting it begins propagation delay on the link to the next router. Immediately the second packet begins transmitting. The first packet arrives at B and the second packet begins propagating until it too arrives at B. 
 </details><br>
 
-For packet one The total delay is:
+For packet one the total delay is:
 $$ \frac{L}{R}+\frac{D}{S} = \text{Total Delay 1}$$
 
-For packet two The total delay is:
+For packet two the total delay is:
 $$ \frac{La}{R} + \frac{L}{R}+\frac{D}{S} = \text{Total Delay 2}$$
 
 
