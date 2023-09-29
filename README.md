@@ -2,7 +2,7 @@
 
 I'm maintaining this Portfolio for IC322: Computer Networks. If you're visiting, you're *not* welcome! Do feel free to leave feedback by opening an issue or submitting a merge request.
 
-Currently in debt TWO weeks. I will pay it in time. (ironically this is a good thing)
+Currently in debt 1.5 weeks. I did not pay it in time. (ironically this is a good thing)
 
 
 1. [Week One: The Internet](/week01/README.md)
