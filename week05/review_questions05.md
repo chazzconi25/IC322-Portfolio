@@ -3,16 +3,22 @@
 ## Review Questions
 
 ### R17: Consider two hosts, A and B, transmitting a large file to a server C, over a bottleneck link with rate R. To transfer the file, the hosts use TCP with the same parameters (including MSS and RTT) and start their transmissions at the same time. Host A uses a single TCP connection for the entire file, while Host B uses 9 simultaneous TCP connections, each for a portion (i.e., a chunk) of the file. What is the overall transmission rate achieved by each host at the beginning of the file transfer? Is this situation fair?
--
+
+- 
 - I am not at liberty to discuss the fairness of life or networks.
+
 ***
 
-### R18: True or false? Consider congestion control in TCP. When the timer expires at the sender, the value of ssthresh is set to one half of its previous value.
-- False
+### R18: True or false? Consider congestion control in TCP. When the timer expires at the sender, the value of ssthresh is set to one half of its previous value
+
+- False, the new value is one half of cwind.
+
 ***
 
 ## Problems
-### P27: Host A and B are communicating over a TCP connection following RFC 5681. Host B has already received from A all bytes up through byte 96. Suppose Host A then sends two segments to Host B back-to-back. The first and the second segments contain 40 and 80 bytes of data, respectively. In the first segment, the sequence number is 97, the source port number is 302, and the destination port number is 80.
+
+### P27: Host A and B are communicating over a TCP connection following RFC 5681. Host B has already received from A all bytes up through byte 96. Suppose Host A then sends two segments to Host B back-to-back. The first and the second segments contain 40 and 80 bytes of data, respectively. In the first segment, the sequence number is 97, the source port number is 302, and the destination port number is 80
+
 *Host B sends an acknowledgment whenever it receives a segment from Host A.*
 **a.** In the second segment sent from Host A to B, what are the sequence number, source port number, and destination port number?
 **b.** If the first segment arrives before the second segment, in the acknowledgment of the first arriving segment, what is the acknowledgment number,
@@ -30,8 +36,8 @@ the source port number, and the destination port number?
 ***
 
 ### P40: Consider Figure 3.61. Assuming TCP Reno is the protocol experiencing the behavior shown above, answer the following questions. In all cases, you should provide a short discussion justifying your answer.
-![Figure 3.61](image.png)<br>
-**a.** Identify the intervals of time when TCP slow start is operating.<br>
-**b.** Identify the intervals of time when TCP congestion avoidance is operating.<br>
-**c.** After the 16th transmission round, is segment loss detected by a triple duplicate ACK or by a timeout?<br>
-**d.** After the 22nd transmission round, is segment loss detected by a triple duplicate ACK or by a timeout?<br>
+![Figure 3.61](image.png)  
+**a.** Identify the intervals of time when TCP slow start is operating.  
+**b.** Identify the intervals of time when TCP congestion avoidance is operating.  
+**c.** After the 16th transmission round, is segment loss detected by a triple duplicate ACK or by a timeout?  
+**d.** After the 22nd transmission round, is segment loss detected by a triple duplicate ACK or by a timeout?
