@@ -12,23 +12,24 @@ have the same destination IP address and destination port number, then the two s
 
 ***
 ### R8: Suppose that a Web server runs in Host C on port 80. Suppose this Web server uses persistent connections, and is currently receiving requests from two different Hosts, A and B. Are all of the requests being sent through the same socket at Host C? If they are being passed through different sockets, do both of the sockets have port 80? Discuss and explain.
-- Becuase the webserver is using persistent connection with TCP the web server will shake hands with each new host through one socket and then create a new socket for each new host to maintain connection. This means that all of the request being sent by host C are going through the same socket. The are passed through the same socket and it has port 80 for the corresponding process.
+- Because the webserver is using persistent connection with TCP the web server will shake hands with each new host through one socket and then create a new socket for each new host to maintain connection. This means that all of the request being sent by host C are going through the same socket. The are passed through the same socket and it has port 80 for the corresponding process.
 ***
 
 ### R9: In our rdt protocols, why did we need to introduce sequence numbers?
-
+- The sequence numbers were used for seeing which packets were which and in what order. It was a backup to see if somthing was dropped or if we needed to wait on another sequence.
 ***
 ### R10: In our rdt protocols, why did we need to introduce timers?
-
+The timer set a limit on the amout of time spent waiting for a certian sequence of packet to come through before tring to resend. The timer starts when a packet is sent. If it goes unaknoledged for too much time it can be inferred that it didn't arrive or the ACK is not coming.
 ***
 ### R11: Suppose that the roundtrip delay between sender and receiver is constant and known to the sender. Would a timer still be necessary in protocol rdt 3.0, assuming that packets can be lost? Explain.
-
+- You would still need a timer but you would be able to much more accurately predict if a packet/ACK was dropped. This would make the sender more efficient and decongest the network.
 ***
 ### R15: Suppose Host A sends two TCP segments back to back to Host B over a TCP connection. The first segment has sequence number 90; the second has sequence number 110.
 **a. How much data is in the first segment?**<br>
+- 20 bytes because sequence numbers go up by bytes and start with the number of the first byte. Therefore 110 - 90 = 20 bytes for sequence 1.
 
 **b. Suppose that the first segment is lost but the second segment arrives at B. In the acknowledgment that Host B sends to Host A, what will be the acknowledgment number?**
-
+- ACK 90 becuase the host doesn't know that the segment is actually 110 and it expected to recieve 90. This will notify the sender (who just sent 110) something is wrong.
 ***
 ## Problems
 ### P3: UDP and TCP use 1s complement for their checksums. Suppose you have the following three 16 bit words: 0101001101100110; 0111010010110100; 0000110111000001. What is the 1s complement of the sum of these words? Show all work. Why is it that UDP offers a checksum? With the 1’s complement scheme, how does the receiver detect errors? Describe how a single bit flip can be detected.

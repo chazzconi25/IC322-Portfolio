@@ -4,4 +4,4 @@ Click the links below to access the work I did for this week!
 2. [Review Questions](review_questions05.md)
 3. [Link to my feedback on MIDN Summers portfolio]()
 
-> Damn this is gonna kill me
+> Almost there!
