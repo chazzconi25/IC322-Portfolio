@@ -4,7 +4,7 @@
 
 ### R17: Consider two hosts, A and B, transmitting a large file to a server C, over a bottleneck link with rate R. To transfer the file, the hosts use TCP with the same parameters (including MSS and RTT) and start their transmissions at the same time. Host A uses a single TCP connection for the entire file, while Host B uses 9 simultaneous TCP connections, each for a portion (i.e., a chunk) of the file. What is the overall transmission rate achieved by each host at the beginning of the file transfer? Is this situation fair?
 
-- 
+- The overall transmission rate achieved by each host at the beginning of the file transfer is 
 - I am not at liberty to discuss the fairness of life or networks.
 
 ***
@@ -19,11 +19,26 @@
 
 ### P27: Host A and B are communicating over a TCP connection following RFC 5681. Host B has already received from A all bytes up through byte 96. Suppose Host A then sends two segments to Host B back-to-back. The first and the second segments contain 40 and 80 bytes of data, respectively. In the first segment, the sequence number is 97, the source port number is 302, and the destination port number is 80
 
-*Host B sends an acknowledgment whenever it receives a segment from Host A.*
-**a.** In the second segment sent from Host A to B, what are the sequence number, source port number, and destination port number?
+*Host B sends an acknowledgment whenever it receives a segment from Host A.*  
+**a.** In the second segment sent from Host A to B, what are the sequence number, source port number, and destination port number?  
+```
+Seq Number = 207
+Source Port = 302
+Destination Port = 80
+```
 **b.** If the first segment arrives before the second segment, in the acknowledgment of the first arriving segment, what is the acknowledgment number,
 the source port number, and the destination port number?
+```
+ACK Number = 207
+Source Port = 80
+Destination Port = 302 
+```
+
 **c.** If the second segment arrives before the first segment, in the acknowledgment of the first arriving segment, what is the acknowledgment number?
+```
+ACK Number = 127
+```
+
 **d.** Suppose the two segments sent by A arrive in order at B. The first acknowledgment arrives after the first timeout interval. What is
 ***
 

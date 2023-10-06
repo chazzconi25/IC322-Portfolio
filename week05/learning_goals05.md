@@ -21,4 +21,4 @@ Fast recovery is a recommended addition to TCP for recovering dropped packets an
 
 As data arrives from a TCP connection it is placed in the receivers buffer. This data has not yet been processed by the application via the socket. The more packet data that is held in the buffer the less space we have. If this space runs out then Packets are dropped. To solve this problem Flow control.
 
- Flow control matches the rate at which the sender sends to the rate at which the receiver can process the data. This is accomplished with the variable known as the receive window to communicate the free space in the receivers buffer to the sender.
+Flow control matches the rate at which the sender sends to the rate at which the receiver can process the data. This is accomplished with the variable known as the receive window to communicate the free space in the receivers buffer to the sender.
