@@ -1,24 +1,12 @@
-# Week Four: Transport Layer: TCP and UDP
+# Week Seven: The Network Layer: Data Plane
 
 ## Review Questions
 
-### R11: What is the role of a packet scheduler at the output port of a router?
+### R11: Describe how packet loss can occur at input ports. Describe how packet loss at input ports can be eliminated (without using infinite buffers).
 
-- 
 ***
 
-### R12:
-**a. What is a drop-tail policy?**  
-
-- When there is not enough memory to buffer an incoming packet the arriving packet is dropped and the packet already waiting in the router is held. Doing this can provide a congestion signal to the semder.
-
-**b. What are AQM algorithms?**  
-
-- A series of proactive packet dropping-dropping and marking policies.
-
-**c. Name one of the most widely studied and implemented AQM algorithms and explain how it works.**  
-
-- One example of an AQM is RED or Random Early Detection. RED uses three factors to determine if a packet should be dropped or enqueued: average queue length, drop probability, and logic. The average queue length is determined via a formula that accounts for the previously calculated average queue, a constant based on the weight of the queue length, and the 
+### R12: Describe how packet loss can occur at output ports. Can this loss be prevented by increasing the switch fabric speed?
 
 ***
 
@@ -26,7 +14,7 @@
 
 ***
 
-### R16: What is an essential different between RR and WFQ packet scheduling? Is there a case (Hint: Consider the WFQ weights) where RR and WFQ will behave exactly the same?
+### R16: What is an essential difference between RR and WFQ packet scheduling? Is there a case (hint: consider the WFQ weights) where RR and WFQ will behave exactly the same?
 
 ***
 
@@ -34,7 +22,7 @@
 
 ***
 
-### R21: How many IP addresses does a router have?
+### R21: Do routers have IP addresses? If so, how many?
 
 ***
 
@@ -44,15 +32,24 @@
 
 ***
 
-### P5: Suppose that the WEQ scheduling policy is applied to a buffer that supports three classes, and suppose the weights are 0.5, 0.25, and 0.25 for the three classes
+### P5: Suppose that the WFQ scheduling policy is applied to a buffer that supports three classes, and suppose the weights are 0.5, 0.25, and 0.25 for the three classes
+> WEQ DOES NOT EXIST WHAT THE HECK
 
 **a. Suppose that each class has a large number of packets in the buffer. In what sequence might the three classes be served in order to achieve the WFQ weights? (For round robin scheduling, a natural sequence is 123123123 . . .).**  
-**b. Suppose that classes 1 and 2 have a large number of packets in the buffer, and there are no class 3 packets in the buffer. In what sequence might the three classes be served in to achieve the WFQ weights?**
+- 
+
+**b. Suppose that classes 1 and 2 have a large number of packets in the buffer, and there are no class 3 packets in the buffer. In what sequence might the three classes be served in to achieve the WFQ weights?**  
+-
+
 
 ***
 
 ### P8: Consider a datagram network using 32-bit host addresses. Suppose a router has four links, numbered 0 through 3, and packets are to be forwarded to the link interfaces as follows:
 
-### P9:
+**a. Provide a forwarding table that has five entries, uses longest prefix matching, and forwards packets to the correct link interfaces.**  
 
-### P11:
+**b. Describe how your forwarding table determines the appropriate link interface for datagrams with destination addresses:**  
+
+### P9: Consider a datagram network using 8-bit host addresses. Suppose a router uses longest prefix matching and has the following forwarding table. For each of the four interfaces, give the associated range of destination host addresses and the number of addresses in the range.
+
+### P11: Consider a router that interconnects three subnets: Subnet 1, Subnet 2, and Subnet 3. Suppose all of the interfaces in each of these three subnets are required to have the prefix 223.1.17/24. Also suppose that Subnet 1 is required to support at least 60 interfaces, Subnet 2 is to support at least 90 interfaces, and Subnet 3 is to support at least 12 interfaces. Provide three network addresses (of the form a.b.c.d/x) that satisfy these constraints.
