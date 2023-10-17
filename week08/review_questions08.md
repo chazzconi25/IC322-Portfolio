@@ -2,54 +2,56 @@
 
 ## Review Questions
 
-### R11: Describe how packet loss can occur at input ports. Describe how packet loss at input ports can be eliminated (without using infinite buffers).
+### R23: Visit a host that uses DHCP to obtain its IP address, network mask, default router, and IP address of its local DNS server. List these values
+
+```powershell
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : academy.usna.edu
+   Description . . . . . . . . . . . : Realtek USB GbE Family Controller
+   Physical Address. . . . . . . . . : 48-9E-BD-22-12-1E
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   IPv4 Address. . . . . . . . . . . : 10.16.146.82(Preferred)<-- IP Address
+   Subnet Mask . . . . . . . . . . . : 255.255.254.0          <-- Network Mask
+   Lease Obtained. . . . . . . . . . : Tuesday, October 17, 2023 04:10:28
+   Lease Expires . . . . . . . . . . : Wednesday, October 25, 2023 07:21:48
+   Default Gateway . . . . . . . . . : 10.16.146.1            <-- Default Router
+   DHCP Server . . . . . . . . . . . : 10.1.74.10             <-- IP of Local DNS
+   DNS Servers . . . . . . . . . . . : 10.1.74.10
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+```
 
 ***
 
-### R12: Describe how packet loss can occur at output ports. Can this loss be prevented by increasing the switch fabric speed?
+### R29: What is a private network address? Should a datagram with a private network address ever be present in the larger public Internet? Explain
+
+- [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918#section-3) defines three blocks of addresses as designated for private internets. The IPs within these ranges are for smaller subnets to preserve the number of IPv4 addresses available to the wider internet. One gateway router will use a public IP to route all traffic from a network of private IPs using NAT. This allows ample smaller networks to all operate many devices using the same private IPv4 addresses. This system relies on private IP addresses staying hidden behind a gateway router because mutltiple private subnets will share private IP addresses in their local subnet and therefore a datagram with a private network address wouldn't make sense in the larger public network.
+
 
 ***
 
-### R13: What is HOL blocking? Does it occur in input ports or output ports?
+### R26: Suppose you purchase a wireless router and connect it to your cable modem. Also suppose that your ISP dynamically assigns your connected device (that is, your wireless router) one IP address. Also suppose that you have five PCs at home that use 802.11 to wirelessly connect to your wireless router. How are IP addresses assigned to the five PCs? Does the wireless router use NAT? Why or why not?
 
-***
-
-### R16: What is an essential difference between RR and WFQ packet scheduling? Is there a case (hint: consider the WFQ weights) where RR and WFQ will behave exactly the same?
-
-***
-
-### R18: What field in the IP header can be used to ensure that a packet is forwarded through no more than N routers?
-
-***
-
-### R21: Do routers have IP addresses? If so, how many?
 
 ***
 
 ## Problems
 
-### P4: Consider the switch shown below. Suppose that all datagrams have the same fixed length, that the switch operates in a slotted, synchronous manner, and that in one time slot a datagram can be transferred from an input port to an output port. The switch fabric is a crossbar so that at most one datagram can be transferred to a given output port in a time slot, but different output ports can receive datagrams from different input ports in a single time slot. What is the minimal number of time slots needed to transfer the packets shown from input ports to their output ports, assuming any input queue scheduling order you want (i.e., it need not have HOL blocking)? What is the largest number of slots needed, assuming the worst-case scheduling order you can devise, assuming that a non-empty input queue is never idle?
+### P15: Consider the topology shown in Figure 4.20. Denote the three subnets with hosts (starting clockwise at 12:00) as Networks A, B, and C. Denote the subnets without hosts as Networks D, E, and F. a. Assign network addresses to each of these six subnets, with the following constraints: All addresses must be allocated from 214.97.254/23; Subnet A should have enough addresses to support 250 interfaces; Subnet B should have enough addresses to support 120 interfaces; and Subnet C should have enough addresses to support 120 interfaces. Of course, subnets D, E and F should each be able to support two interfaces. For each subnet, the assignment should take the form a.b.c.d/x or a.b.c.d/x – e.f.g.h/y. b. Using your answer to part (a), provide the forwarding tables (using longest prefix matching) for each of the three routers
 
 ***
 
-### P5: Suppose that the WFQ scheduling policy is applied to a buffer that supports three classes, and suppose the weights are 0.5, 0.25, and 0.25 for the three classes
-> WEQ DOES NOT EXIST WHAT THE HECK
+### P16: Use the whois service at the [American Registry for Internet Numbers](http://www.arin.net/whois) to determine the IP address blocks for three universities. Can the whois services be used to determine with certainty the geographical location of a specific IP address? Use [maxmind](www.maxmind.com) to determine the locations of the Web servers at each of these universities
 
-**a. Suppose that each class has a large number of packets in the buffer. In what sequence might the three classes be served in order to achieve the WFQ weights? (For round robin scheduling, a natural sequence is 123123123 . . .).**  
-- 
-
-**b. Suppose that classes 1 and 2 have a large number of packets in the buffer, and there are no class 3 packets in the buffer. In what sequence might the three classes be served in to achieve the WFQ weights?**  
--
-
+University of Washington
+University of Notre Dame
+University of Wisconsin-Madison
 
 ***
 
-### P8: Consider a datagram network using 32-bit host addresses. Suppose a router has four links, numbered 0 through 3, and packets are to be forwarded to the link interfaces as follows:
+### P18: Consider the network setup in Figure 4.25. Suppose that the ISP instead assigns the router the address 24.34.112.235 and that the network address of the home network is 192.168.0/24. a. Assign addresses to all interfaces in the home network. b. Suppose each host has two ongoing TCP connections, all to port 80 at host 128.119.40.86. Provide the six corresponding entries in the NAT translation table
 
-**a. Provide a forwarding table that has five entries, uses longest prefix matching, and forwards packets to the correct link interfaces.**  
+***
 
-**b. Describe how your forwarding table determines the appropriate link interface for datagrams with destination addresses:**  
-
-### P9: Consider a datagram network using 8-bit host addresses. Suppose a router uses longest prefix matching and has the following forwarding table. For each of the four interfaces, give the associated range of destination host addresses and the number of addresses in the range.
-
-### P11: Consider a router that interconnects three subnets: Subnet 1, Subnet 2, and Subnet 3. Suppose all of the interfaces in each of these three subnets are required to have the prefix 223.1.17/24. Also suppose that Subnet 1 is required to support at least 60 interfaces, Subnet 2 is to support at least 90 interfaces, and Subnet 3 is to support at least 12 interfaces. Provide three network addresses (of the form a.b.c.d/x) that satisfy these constraints.
+### P19: Suppose you are interested in detecting the number of hosts behind a NAT. You observe that the IP layer stamps an identification number sequentially on each IP packet. The identification number of the first IP packet generated by a host is a random number, and the identification numbers of the subsequent IP packets are sequentially assigned. Assume all IP packets generated by hosts behind the NAT are sent to the outside world
