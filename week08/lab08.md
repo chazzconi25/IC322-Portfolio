@@ -4,6 +4,72 @@
 
 ### How did you solve Chapter 3? Please copy and paste your winning strategy, and also explain it in English
 
+```python3
+# Welcome to the StellarScript Console!
+#
+# This time your single strategy will be run by all 6 drones instead of being
+# run by your ship. Your ship will be emitting messages that the drones need to follow.
+#
+# In this scenario, you will need to parse the messages. Python makes this pretty easy
+# with the split() function.
+#
+# For example:
+# msg = "Key1:Value1\nKey2:Value2\nKey3:Value3"
+# splitted msg.split("\n") # splits the string on newlines
+#
+# Now splitted is a list of strings:
+# ["Key1:Value1", "Key2:Value2", "Key3:Value3"]
+#
+# And you can access these list elements like a typical list:
+# splitted[0] == "Key1:Value1"
+
+def process_strategy(self):
+    
+    while(self.message_queue):
+        m = self.message_queue.pop()
+        # You can use the `self.id` value to create different logic for different drones.
+        print(f"--- Drone {self.id}: Msg on interface {m.interface} ---\n{m.text}\n------------------")
+        mlib = m.text.split("\n")
+        
+        dict = {}
+        for string in mlib:
+            split = string.split(":")
+            dict[split[0]] = split[1]
+            
+        if int(dict["Dest"]) == int(self.id):
+            if dict["Command"] == "start_emit":
+                self.start_emit(dict["Value"])
+            elif dict["Command"] == "focus":
+                self.focus(dict["Value"])
+            else:
+                self.return_results(dict["Value"])
+        else:
+            if int(self.id) == 1 and (dict["Dest"] == "3" or dict["Dest"] == "4" or dict["Dest"] == "6"):
+                self.send_message(m.text,"N")
+            elif int(self.id) == 1:
+                self.send_message(m.text,"E")
+            elif int(self.id) == 3:
+                self.send_message(m.text,"E")
+            elif int(self.id) == 4:
+                self.send_message(m.text,"N")
+            elif int(self.id) == 2:
+                self.send_message(m.text,"S")
+            else:
+                print(self.id)
+   
+    # These drones have 3 special functions:
+    # self.start_emit(value)
+    # self.focus(value)
+    # self.return_results(value)
+    # You don't have to know much about these functions, except that your ship is emitting messages asking
+    # specific drones to call specific functions using specific values. In this scenario
+    # you can't control the messages being sent by your ship. You can only program the drones.
+
+# Remember, you can set `wait_for_user` to be True if you want the game to pause every tick.
+s = Chapter3(process_strategy, wait_for_user=False)
+s.run()
+```
+
 ### How did you solve Chapter 4? Please copy and paste your winning strategy, and also explain it in English
 
 ### Include a section on Beta Testing Notes
