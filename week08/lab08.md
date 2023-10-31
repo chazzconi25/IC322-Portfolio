@@ -72,6 +72,134 @@ s.run()
 
 ### How did you solve Chapter 4? Please copy and paste your winning strategy, and also explain it in English
 
+```python3
+table31 = {
+    "1.1" : "W",
+    "1.2" : "S",
+    "1.3" : "S",
+    "2.1" : "E",
+    "2.2" : "E",
+    "3.2" : "S",
+    "3.3" : "S",
+    "3.4" : "S",
+    "3.5" : "E",
+    "3.6" : "E",
+    "3.7" : "E"
+}
+
+table32 = dict(table31)
+table32.pop("3.2")
+table32["3.1"] = "N"
+table32["1.1"] = "N"
+table32["1.2"] = "W"
+
+table33 = dict(table32)
+table33.pop("3.3")
+table33["3.2"] = "N"
+table33["1.2"] = "N"
+
+table34 = {
+    "1.1" : "N",
+    "1.2" : "N",
+    "1.3" : "W",
+    "2.1" : "N",
+    "2.2" : "N",
+    "3.2" : "N",
+    "3.3" : "N",
+    "3.4" : "N",
+    "3.5" : "N",
+    "3.6" : "N",
+    "3.7" : "N"
+}
+
+table35 = dict(table34)
+table35.pop("3.5")
+table35["1.1"] = "W"
+table35["1.2"] = "W"
+table35["1.3"] = "W"
+table35["3.3"] = "W"
+table35["3.4"] = "W"
+table35["2.2"] = "S"
+
+table36 = dict(table35)
+table36.pop("3.6")
+table36["3.2"] = "W"
+table36["3.5"] = "S"
+
+table37 = dict(table36)
+table37.pop("3.7")
+table37["3.1"] = "W"
+table37["3.6"] = "S"
+
+table21 = {
+    "1.1" : "S",
+    "1.2" : "S",
+    "1.2" : "S",
+    "2.2" : "S",
+    "3.1" : "S",
+    "3.2" : "S",
+    "3.3" : "S",
+    "3.4" : "S",
+    "3.5" : "S",
+    "3.6" : "S",
+    "3.7" : "S"
+}
+
+table22 = dict(table34)
+table22.pop("2.2")
+table22["1.1"] = "N"
+table22["1.2"] = "N"
+table22["1.3"] = "N"
+table22["3.4"] = "N"
+
+tableLookup = {
+    "3.1" : table31,
+    "3.2" : table32,
+    "3.3" : table33,
+    "3.4" : table34,
+    "3.5" : table35,
+    "3.6" : table36,
+    "3.7" : table37,
+    "2.1" : table21,
+    "2.2" : table22,
+}
+
+
+def drone_strategy(self):
+    """Drones are responsible for routing messages."""
+    while(self.message_queue):
+        m = self.message_queue.pop()
+        print(f"--- Drone {self.id}: Msg on interface {m.interface} ---\n{m.text}\n------------------")
+        dict = parse_message(m)
+        self.send_message(m.text,tableLookup[self.id][dict["Dest"]])
+        
+def scanner_strategy(self):
+    """Scanners are responsible for receiving messages, parsing them, taking
+    action, and responding with results."""
+    while(self.message_queue):
+        m = self.message_queue.pop()
+        print(f"--- Scanner {self.id}: Msg on interface {m.interface} ---\n{m.text}\n------------------")
+        dict = parse_message(m)
+        retVal = self.boot(dict["Value"])
+        self.send_message(build_message(self.id, dict["Source"], "Result", retVal), tableLookup[self.id][dict["Source"]])
+
+def build_message(source, dest, command, value):
+     return "Source:" + str(source) + "\n" + "Dest:" + str(dest) + "\n" +  "Command:" + str(command) + "\n" + "Value:" + str(value)
+
+def parse_message(m):
+        mlib = m.text.split("\n")
+        dict = {}
+        for string in mlib:
+            split = string.split(":")
+            #print(split)
+            dict[split[0]] = split[1]
+        return dict
+
+# Set animation_frames to a lower number to speed up the simulation.
+s = Chapter4(drone_strategy, scanner_strategy, animation_frames=10, wait_for_user=False)
+s.run()
+```
+
 ### Include a section on Beta Testing Notes
 
 #### List any bugs you find. When you list the bugs, try to specify the exact conditions that causes them so I can reproduce them

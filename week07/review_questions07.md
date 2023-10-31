@@ -2,27 +2,39 @@
 
 ## Review Questions
 
-### R11: Describe how packet loss can occur at input ports. Describe how packet loss at input ports can be eliminated (without using infinite buffers).
+### R11: Describe how packet loss can occur at input ports. Describe how packet loss at input ports can be eliminated (without using infinite buffers)
+
+When packets come into the input ports they may have to wait to go through the routers switching fabric. This is caused by two situations, output port contention and HOL blocking. Output port contention occurs when two input ports have packets to be sent onto the same input port at the same time so one must wait while the other goes through the switching fabric. HOL blocking occurs when an output port is open for a datagram in an input port but it is in line behind another datagram in the same input port. As more packets arrive in the input port and not enough are sent, they fill up the routers input buffer. If the buffer is filled then incoming packets are dropped. We can elimnate packet loss at input ports by increasing the switch fabric speed so packets never have the chance to build up if they are switched faster than they come in
 
 ***
 
 ### R12: Describe how packet loss can occur at output ports. Can this loss be prevented by increasing the switch fabric speed?
 
+Packet loss can also be dropped in the output if it takes too much transmission delay. This loss will not be prevented by increasing switch fabric speed because that will only make packets arrive to be transmitted quicker. To prevent buildup the transmission speed should be upgraded so packets that come from the switch fabric are sent faster than they arrive.
+
 ***
 
 ### R13: What is HOL blocking? Does it occur in input ports or output ports?
+
+HOL blocking occurs when an output port is open for a datagram in an input port but it is in line behind another datagram in the same input port.
 
 ***
 
 ### R16: What is an essential difference between RR and WFQ packet scheduling? Is there a case (hint: consider the WFQ weights) where RR and WFQ will behave exactly the same?
 
+WFQ is a combination of RR and prioritized queuing. In RR there is no priority so each group of packets gets equal chance to transmit. In WFQ each group gets some time unlike prioritized where if a higher priority always has packets the lower priorities will never send. If all of the weights for each group of packets are the same or if one group has no packets to send thus creating equal weights for those that do, WQF will behave the same as RR.
+
+
 ***
 
 ### R18: What field in the IP header can be used to ensure that a packet is forwarded through no more than N routers?
 
+
 ***
 
 ### R21: Do routers have IP addresses? If so, how many?
+
+Routers do have IP addresses, they have one for each of their interfaces that corresponds to the subnet they are connected to or it matches the IP of an adjacent router connected to that interface.
 
 ***
 
