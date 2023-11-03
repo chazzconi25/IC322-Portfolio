@@ -9,7 +9,7 @@
 
 #### Subnet Mask Example:
 
-```
+```text
 Subnet address in decimal: 223.1.1.0/24
 Same address as binary: 11011111 . 00000001 . 00000001. 00000000
                         \_______   ________   _______/
