@@ -5,7 +5,7 @@
 ### Include your client and server strategy code
 
 ```python
-    print("test")
+
 ```
 
 ### Explain your strategies in English
