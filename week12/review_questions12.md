@@ -2,7 +2,7 @@
 
 ## Review Questions
 
-### R4: Suppose two nodes start to transmit at the same time a packet of length L over a broadcast channel of rate R. Denote the propagation delay between the two nodes as dprop. Will there be a collision if d~prop~ < L/R? Why or why not?
+### R4: Suppose two nodes start to transmit at the same time a packet of length L over a broadcast channel of rate R. Denote the propagation delay between the two nodes as dprop. Will there be a collision if d <sub>prop</sub> < L/R? Why or why not?
 
 ***
 
