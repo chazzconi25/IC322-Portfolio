@@ -1,3 +1,5 @@
+# This is a failed idea I tried
+# What a waste of time
 G = input('Enter G: ')
 r = len(G)-1
 G = int(G, 2)
