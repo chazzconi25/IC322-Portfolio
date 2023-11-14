@@ -2,8 +2,9 @@
 
 ## Review Questions
 
-### R4: Suppose two nodes start to transmit at the same time a packet of length L over a broadcast channel of rate R. Denote the propagation delay between the two nodes as $d_{prop}$. Will there be a collision if $d_{prop}$ < L/R? Why or why not?
+### R4: Suppose two nodes start to transmit at the same time a packet of length $L$ over a broadcast channel of rate $R$. Denote the propagation delay between the two nodes as $d_{prop}$. Will there be a collision if $d_{prop} < \frac{L}{R}$? Why or why not?
 
+There will be a collision because the packets have not finished moving across the wire so they will collide.
 
 ***
 
@@ -16,9 +17,9 @@ The four desirable characteristics of a broadcast channel are:
 3. The protocol is decentralized; that is, there is no master node that represents a single point of failure for the network.
 4. The protocol is simple, so that it is inexpensive to implement.
 
-- Slotted ALOHA covers 3 and 4 but not 1 and 2
-  - Slotted ALOHA does not depend on a master node and it is simple to implement because all the nodes just need to have a synchronized time to work. Therefore 3 and 4 are covered.
-  - In slotted Aloha each node has a probability to send $p$ (a fraction) on each time slot defined as $\frac{L}{R}$ seconds. This means each time slot is enough for one frame to be sent. Unfortunately the rate at which a node can send is limited by $p$ making the effective transmission rate $p*R$. If there is just one node sending or M, the rate will be less than both $R$ and $\frac{R}{M}$.
+- Slotted ALOHA covers 1, 3, and 4 but not 2
+  - Slotted ALOHA does not depend on a master node and it is simple to implement because all the nodes just need to have a synchronized time to work. If only one node is sending there will be no collisions and no need to retransmit so $R$ will be achieved.
+  - In slotted Aloha each node has a probability to retransmit $p$ (a fraction) on each time slot defined as $\frac{L}{R}$ seconds. This means each time slot is enough for one frame to be sent. Unfortunately the rate at which a node can send is limited by $p$ making the effective transmission rate $p*R$ for multiple nodes so $\frac{R}{M}$ is not achieved.
 - Token Passing covers 1, 2, and 4 and technically covers 3
   - Under token passing whichever node has the token can broadcast up to $R$ bps and if Multiple nodes need to broadcast all they need to do is wait for the token to broadcast at $R$ achieving $\frac{R}{M}$ bps. It is also simple to implement.
   - Token passing technically covers 3 in that there is no master node so it is decentralized but if one node is off or fails to pass the token the whole chanel crashes.
@@ -34,9 +35,30 @@ The four desirable characteristics of a broadcast channel are:
 
 ### P1: Suppose the information content of a packet is the bit pattern 1110 0110 1001 0101 and an even parity scheme is being used. What would the value of the field containing the parity bits be for the case of a two-dimensional parity scheme? Your answer should be such that a minimum-length checksum field is used
 
+```text
+1110|1
+0110|0
+1001|0
+0101|0
+----+-
+0100|1
+
+parity bits: 0100 1000 1
+```
+
 ***
 
 ### P3: Suppose the information portion of a packet(D in Figure 6.3) contains 10 bytes consisting of the 8-bit unsigned binary ASCII representation of string "Internet." Compute the Internet checksum for this data
+
+```text
+01101001 01101110 01110100 01100101 01110010 01101110 01100101 01110100 00101110 00000000
+\_______________/ \_______________/ \_______________/ \_______________/ \_______________/
+      26990      +      29797      +      29294      +      25972      +      11776
+                                        = 123829
+                                        =11110001110110101
+                      Ones Complement -->00001110001001010
+                  (internet checksum)                                  
+```
 
 ***
 
@@ -44,22 +66,43 @@ The four desirable characteristics of a broadcast channel are:
 
 For CRC checks the following formula is used to calculate $R$. Where $r = len(G)-1$.
 $$R=remainder\frac{D*2^r}{G}$$
-> I made a python script to do this for me because I refuse to learn binary long division.0 [Had to beat ChatGPT over the head to get the string to format properly.](https://chat.openai.com/c/c84befcb-a042-49ea-82fb-d344b91403b6) I wrote everything else on my own
 
-```python
-G = input('Enter G: ')
-r = len(G)-1
-G = int(G, 2)
-D = input('Enter D: ')
-D = int(D, 2)
-R = (D*(2**r))%G
-R = bin(R)
-print(f"R is: {R[2:]:0>{r}}") #This line was written by ChatGPT
+1. $D = 1000100101$ --> $R = 0100$
+
+```text
+      _____100100100
+10011 )1000100101000
+      -10011        
+      =00010001     
+         -10011     
+         =00010010  
+            -10011  
+            =0000100
 ```
 
-1. $D = 1000100101$ --> $R = 0110$
-2. $D = 0101101010$ --> $R = 10000$
-3. $D = 0110100011$ --> $R = 10000$
+2. $D = 0101101010$ --> $R = 0101$
+
+```text
+      ______10101
+10011 )0101101010
+       -10011        
+       =0010110    
+         -10011     
+         =0010110 
+           -10011  
+           =00101
+```
+
+3. $D = 0110100011$ --> $R = 1011$
+
+```text
+      ______11000
+10011 )0110100011
+       -10011        
+       =010010    
+        -10011     
+        =00001011
+```
 
 ***
 
@@ -90,7 +133,28 @@ $$4p(1-p)^3$$
 
 ***
 
-### P13:
+### P13: Consider a broadcast channel with $N$ nodes and a transmission rate of $R$ bps. Suppose the broadcast channel uses polling (with an additional polling node) for multiple access. Suppose the amount of time from when a node completes transmission until the subsequent node is permitted to transmit (that is, the polling delay) is $d_{poll}$. Suppose that within a polling round, a given node is allowed to transmit at most {Q} bits. What is the maximum throughput of the broadcast channel?
 
+$$ R = \frac{bits}{second}\ Q=bits\ N= number\ of\ nodes$$
+
+- To get the total throughput for the channel we need the total number of bits sent in one round of polling divided by the time it takes for a round of polling.
+
+$$ R_{total} = \frac{bits_{total}}{time_{total}} $$
+
+- In a round of polling each node gets to send Q bits after they are polled.
+
+$$ {bits_{total} = N*Q} $$
+
+- In a round of polling each node transmits $Q$ bits and therefore requires time $\frac{Q}{R}$. Before each node can transmit however, time is used for the $d_{poll}$.
+
+$$ {time_{total} = N*(\frac{Q}{R}+d_{poll})} $$
+
+- The total throughput can be written as:
+
+$$ R_{total} = \frac{N*Q}{N*(\frac{Q}{R}+d_{poll})} $$
+
+- Simplified
+
+$$ R_{total} = \frac{Q}{(\frac{Q}{R}+d_{poll})} $$
 
 ***
