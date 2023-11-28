@@ -2,7 +2,7 @@
 
 ## Review Questions
 
-### R17: Consider two hosts, A and B, transmitting a large file to a server C, over a bottleneck link with rate R. To transfer the file, the hosts use TCP with the same parameters (including MSS and RTT) and start their transmissions at the same time. Host A uses a single TCP connection for the entire file, while Host B uses 9 simultaneous TCP connections, each for a portion (i.e., a chunk) of the file. What is the overall transmission rate achieved by each host at the beginning of the file transfer? Is this situation fair?
+### R17: Suppose two TCP connections are present over some bottleneck link of rate R bps. Both connections have a huge file to send (in the same direction over the bottleneck link). The transmissions of the files start at the same time. What transmission rate would TCP like to give to each of the connections?
 
 - The overall transmission rate achieved by each host at the beginning of the file transfer is 
 - I am not at liberty to discuss the fairness of life or networks.
@@ -31,7 +31,7 @@ the source port number, and the destination port number?
 ```
 ACK Number = 207
 Source Port = 80
-Destination Port = 302 
+Destination Port = 302
 ```
 
 **c.** If the second segment arrives before the first segment, in the acknowledgment of the first arriving segment, what is the acknowledgment number?

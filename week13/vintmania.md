@@ -15,10 +15,10 @@ Vint Cerf is known as the "Father of the Internet" for co-designing the Transmis
 3. [Cerf has a humorous side!](https://blogs.scientificamerican.com/guest-blog/the-creation-of-the-internet-privacy-and-a-geek-joke-interview-with-vint-cerf/)
 
 ### Develop 2 interesting and insightful questions you'd like to ask him. For each question, describe why it is interesting and insightful
-
+ 
 In you Ted Talk on DTM, Delay and Disruption Tolerant Protocols, you mentioned that a store and forward idea was used to transmit data from Mars to Earth. You also aknoledged that this is the same way packet switching works in the internet. Do you see any other real life situations where internet protocols and their application may solve communication or transmission problems?
 
-This question is insightful because it acknowledges Vint Cerfs earlier work. It is interesting because it tries to draw bigger parallels between the feild of computer science and the internet and real world graph problems.
+This question is insightful because it acknowledges Vint Cerfs earlier work. It is interesting because it tries to draw bigger parallels between the field of computer science and the internet and real world graph problems.
 
 As Vice President of ICANN you are a major force for standardization in the internet. What are the benefits of standardized protocols and what are the major hurdles to getting everyone on board with a standard.
 

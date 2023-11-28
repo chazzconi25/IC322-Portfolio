@@ -8,10 +8,10 @@ Congestion control limits the packets sent from the client to the host to ensure
 
 TCP congestion control is specifically avoided via three states based on the size of the congestion window (cwnd),  
 
-1. **Slow Start**  
+1. **Slow Start**
 The first stage to TCP is slow-start. The size of cwnd starts small and doubles each time a transmitted segment is ACKed. The window grows exponentially until a loss event occurs when the window is reset to one. A separate value, ssthresh, is set to 1/2 the previous value of cwnd. TCP then moves on to congestion avoidance where it utilizes this value.
 
-2. **Congestion Avoidance**  
+2. **Congestion Avoidance**
 Once cwnd increases to be the size of ssthresh TCP starts increasing cwnd more conservatively by a constant amount. If there are no losses and the connection catches up then triple duplicate ACKs are received and the fast-recovery state starts.
 
 3. **Fast Recovery**
