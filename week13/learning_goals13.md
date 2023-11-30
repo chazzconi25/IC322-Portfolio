@@ -27,7 +27,14 @@ Management: switches prevent one downed connection from taking down the network 
 
 ### I can explain the problem ARP solves, how it solves the problem, and can simulate an ARP table given a simple LAN scenario
 
+Address Resolution Protocol translates IP addresses to link-layer addresses. Like DNS, ARP can resolve host IPs to MAC addresses. Unlike DNS which can resolve any domain in the internet to an IP ARP is only used for the local subnet.
 
+ARP does its translations via ARP tables stored in hosts and routers. The ARP tables contain three fields: IP Address, MAC Address, and Time To Live. Hosts and routers build their ARP tables using ARP packets. ARP packets includes sending and receiving IP and MAC addresses. These ARP packets are clasified as query or response packets. Query packets are sent using the MAC broadcast address `FF-FF-FF-FF-FF-FF` which will transmit the frame everywhere on the subnet so that each host and router can check if the destination IP address in the ARP packet matches their IP. If it does, they will respond with a ARP response to the MAC address of the source of the query packet. Both hosts will update their ARP tables accordingly when the packets are sent back and forth. If no packets revalidate the need for the entry in the ARP table then it will be deleted after the Time to Live value expires.
+
+#### Example ARP simulation
+
+![ARP table in simple subnet](img/img2.jpg)
+
+Here host B has sent out an ARP request for IP ```111.111.111.110``` and for an IP outside the subnet. In both cases the requests where broadcast along the network. For the first request, Host A identified it has MAC address ```AAA-AAA-AAA-AAA-AAA-AAA``` and sent a response to host B to log in its ARP table. Int he second rquest the router recieved the IP and idetified that it was not in the subnet and responded with its IP and MAC address.
 
 ### I can explain CSMA/CA, how it differs from CSMA/CD, what problems it addresses, and how it solves them
-
