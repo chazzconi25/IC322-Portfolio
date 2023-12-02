@@ -35,6 +35,29 @@ ARP does its translations via ARP tables stored in hosts and routers. The ARP ta
 
 ![ARP table in simple subnet](img/img2.jpg)
 
-Here host B has sent out an ARP request for IP ```111.111.111.110``` and for an IP outside the subnet. In both cases the requests where broadcast along the network. For the first request, Host A identified it has MAC address ```AAA-AAA-AAA-AAA-AAA-AAA``` and sent a response to host B to log in its ARP table. Int he second rquest the router recieved the IP and idetified that it was not in the subnet and responded with its IP and MAC address.
+Here host B has sent out an ARP request for IP ```111.111.111.110``` and for an IP outside the subnet. In both cases the requests where broadcast along the network. For the first request, Host A identified it has MAC address ```AAA-AAA-AAA-AAA-AAA-AAA``` and sent a response to host B to log in its ARP table. Int he second request the router received the IP and identified that it was not in the subnet and responded with its IP and MAC address.
 
 ### I can explain CSMA/CA, how it differs from CSMA/CD, what problems it addresses, and how it solves them
+
+Random access protocol CSMA/CA
+
+CSMA = "carrier sense multiple access" - each station senses the channel before transmitting and refrains from trsnmitting when the channel is busy
+
+Differences 1: wifi uses collision avoidance technqiues 2: high bit rate errors of wifi, wifi uses ARQ schene
+
+In ethernet collisions are detected and then the transmission must stop. Doesn't happen in wifi because wifi cant detect collisions while sending (incoming signal too weak - costly to detect) and because even if an adapter could listen and transmit wouldn't be able to detect all transmissiond sue to the hidden terminal problem
+
+ENTIRE FRAMES TRANSMITTED REGARDLESS OF NOISE AFTER BROADCAST STARTS
+
+Because of this collision avoidance is priotritized
+
+Steps to CSMA/CA
+
+1. If channel is idle station waits one Distributed Inter-frame Space (DIFS) 
+2. else station choses random backoff value using binary exponential backoff - only counts down value after DIFS and channel is idle
+2. When counter reaches 0 station transmits the entire fame and waits for ack
+3. If ack is received transmitting station knows frame reached dest if it has another frame to send then it goes through step 2 - else if no ack transmitting station goes back to step two as if it collided (larger backoff interval)
+
+RTS and CTS: if a terminal is hidden from other terminals then it has no way of sensing that the channel is busy and will broadcast/count down even when the channel is busy but it just cant hear the other station that is currently talkin to the AP. In order to avoid these collisions stations must send a short Request to Send frame which includes the amount of time it will be transmitting for. The AP then gives the station explicit permission to send and lets other stations know they do not need to send via a Clear To Send control frame. These frames improve preformance by eliminating the hidden station problem and limiting most collisions to short RTS and CTS frames because actual data transmission happens during reserved times.
+
+RTS and CTS: Introduces delay and consumes channel resources. APs can set a threshold for what size of data frames require RTS/CTS. Typically this threshold is larger than the max frame size so RTS/CTS is always skipped.
