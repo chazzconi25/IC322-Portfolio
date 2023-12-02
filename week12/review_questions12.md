@@ -28,10 +28,10 @@ The four desirable characteristics of a broadcast channel are:
 
 ### R6: In CSMA/CD, after the fifth collision, what is the probability that a node chooses K = 4? The result K = 4 corresponds to a delay of how many seconds on a 10 Mbps Ethernet?
 
-$K$ values are chosen using the binary exponential backoff equation. This is done by choosing a random $K$ with equal probability within the range $\{0,1,2,...\ n^2-1\}$ where $n$ is the number of collisions. If there has been 4 collisions then the range generated will be $\{0,1,2,...\ 31\}$. Therefore the probabaility $K = 4$ is $\frac{1}{32}$.
+$K$ values are chosen using the binary exponential backoff equation. This is done by choosing a random $K$ with equal probability within the range $\{0,1,2,...\ n^2-1\}$ where $n$ is the number of collisions. If there has been 4 collisions then the range generated will be $\{0,1,2,...\ 31\}$. Therefore the probability $K = 4$ is $\frac{1}{32}$.
 
 $d_{ExpBackoff}$ due to $K$ is equal to the amount of time it takes to send 512 bits multiplied by $K$. On an $R$ rate ethernet this is calculated by:
-$$d_{ExpBackoff}\ =\ \frac{512}{R} * K $$ 
+$$d_{ExpBackoff}\ =\ \frac{512}{R} * K $$
 In this senario:
 $$d_{ExpBackoff}\ =\ \frac{512}{1000000}*\ 4 = 0.002048\ seconds$$
 ***
