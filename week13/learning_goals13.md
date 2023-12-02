@@ -35,7 +35,7 @@ ARP does its translations via ARP tables stored in hosts and routers. The ARP ta
 
 ![ARP table in simple subnet](img/img2.jpg)
 
-Here host B has sent out an ARP request for IP ```111.111.111.110``` and for an IP outside the subnet. In both cases the requests where broadcast along the network. For the first request, Host A identified it has MAC address ```AAA-AAA-AAA-AAA-AAA-AAA``` and sent a response to host B to log in its ARP table. Int he second request the router received the IP and identified that it was not in the subnet and responded with its IP and MAC address.
+Here host B has sent out an ARP request for IP ```111.111.111.110``` and for an IP outside the subnet. In both cases the requests where broadcast along the network. For the first request, Host A identified it has MAC address ```AAA-AAA-AAA-AAA-AAA-AAA``` and sent a response ../week12/review_questions12.mdto host B to log in its ARP table. Int he second request the router received the IP and identified that it was not in the subnet and responded with its IP and MAC address.
 
 ### I can explain CSMA/CA, how it differs from CSMA/CD, what problems it addresses, and how it solves them
 
