@@ -52,21 +52,25 @@ IXPs make money by selling ports. The larger the port an ISP wants to peer with 
 
 Source for second paragraph:https://packetpushers.net/htirw-internet-exchange-points/?doing_wp_cron=1695009421.6981561183929443359375#:~:text=IXPs%20sell%20their%20services%20based,it's%20the%20same%20basic%20concept.
 
-### R18: A user can directly connect to a server through either long-range wireless or a twisted-pair cable for transmitting a 1500-bytes file. The transmission rates of the wireless and wired media are 2 and 100 Mbps, respectively. Assume that the propagation speed in air is 3 * 108 m/s, while the speed in the twisted pair is 2 * 108 m/s. If the user is located 1 km away from the server, what is the nodal delay when using each of the two technologies?
+### R18: How long does it take a packet of length 1,000 bytes to propagate over a link of distance 2,500 km, propagation speed 2.5 * 10^8 m/s, and transmission rate 2 Mbps? More generally, how long does it take a packet of length L to propagate over a link of distance d, propagation speed s, and transmission rate R bps? Does this delay depend on packet length? Does this delay depend on transmission rate?
 
-Total delay = Propogation delay + transmission delay + queuing delay
-Total delay = d/s + L/R + 0
+$$d_{total} = d_{prop} + d_{trans} + d_{queue}$$
+$$d_{total} = \frac{d}{s} + \frac{L}{R} + 0$$
+$$\frac{d}{s} = \frac{2500}{2.5*10^8} = 0.00001$$
+$$\frac{L}{R} = \frac{1000}{2000000} = 0.0005$$
+$$d_{total} = 0.00001 + 0.0005 = 0.00051\ seconds$$
 
-d/s = 2500/(2.5)*10^8
+Hell yeah it depends on transmission rate and packet length, those make up $d_{trans}$ smh what kind of question is that?
 
-L/R = 
 
 ### R19: Suppose Host A wants to send a large file to Host B. The path from Host A to Host B has three links, of rates R1 = 500 kbps, R2 = 2 Mbps, and R3 = 1 Mbps.
-**a. Assuming no other traffic in the network, what is the throughput for the file transfer?**
 
+**a. Assuming no other traffic in the network, what is the throughput for the file transfer?**
+The throughput for the transfer is 500 kbps because that is a bottleneck.
 
 **b. Suppose the file is 4 million bytes. Dividing the file size by the throughput, roughly how long will it take to transfer the file to Host B?**
-
+$$\frac{4000000b}{500000\frac{b}{s}} = 8 s$$
 
 **c. Repeat (a) and (b), but now with R2 reduced to 100 kbps.**
-
+The throughput is now 100 kbps as R2 is a bottleneck now.
+$$\frac{4000000b}{100000\frac{b}{s}} = 40 s$$
