@@ -26,11 +26,20 @@ Same address as binary: 11011111 . 00000001 . 00000001. 10000001
 
 ### I can step though the DHCP protocol and show how it is used to assign IP addresses
 
+DHCP is critical to assigning IP addresses, especially on a network where different hosts may be joining and leaving the network over and over. One example might be a university library wifi network where new students come in and out every day. If someone had to individually assign IPs every time students came and went from the network it would take forever. DHCP allows a host and a DHCP server(s) to work in conjunction so that when a host joins a network it can automatically recieve an IP in the subnet.
+
 1. **DHCP server discovery**  
-When a new host connects to a network it must find a DHCP server to assign it a new IP within the network. Because the client just connected it doesn't know where it is or where the DHCP server could be so it broadcasts a DHCP discover message using an IP destination of 255.255.255.255 and source IP of 0.0.0.0.
+When a new host connects to a network it must find a DHCP server to assign it a new IP within the network. Because the client just connected it doesn't know where it is or where the DHCP server could be so it broadcasts a DHCP discover message using an IP destination of 255.255.255.255 and source IP of 0.0.0.0.  
+![DHCP step 1](photos/dhcp1.jpg)
+
 2. **DHCP server offer(s)**  
-The broadcast will reach all nodes in the subnet including any DHCP servers. When the DHCP servers receive the discover message they respond with a DHCP offer message sent to all users because they too do not know the location of the new host yet. This offer includes a yiaddr that the host can use, Lifetime (an amount of time they can keep that address), and the DHCP server's IP address.
+The broadcast will reach all nodes in the subnet including any DHCP servers. When the DHCP servers receive the discover message they respond with a DHCP offer message sent to all users because they too do not know the location of the new host yet. This offer includes a yiaddr that the host can use, Lifetime (an amount of time they can keep that address), and the DHCP server's IP address.  
+![DHCP step 2](photos/dhcp2.jpg)
+
 3. **DHCP request**  
-Now that the host knows a possible IP address (or multiple if there are multiple DHCP servers) it also knows the subnet mask. It will respond to the server with a requested yiaddrr.
+Now that the host knows a possible IP address (or multiple if there are multiple DHCP servers) it also knows the subnet mask. It will respond to the server with a requested yiaddrr. It responds with a broadcast so all DHCP servers know which offer the host is taking.  
+![DHCP step 3](photos/dhcp3.jpg)
+
 4. **DHCP ACK**  
-Finally, the DHCP server responds confirming that the request is fulfilled as specified by the host in the previous step.
+Finally, the DHCP server responds confirming that the request is fulfilled as specified by the host in the previous step.  
+![DHCP step 4](photos/dhcp4.jpg)
