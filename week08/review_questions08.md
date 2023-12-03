@@ -32,7 +32,7 @@ Ethernet adapter Ethernet:
 
 ### R26: Suppose you purchase a wireless router and connect it to your cable modem. Also suppose that your ISP dynamically assigns your connected device (that is, your wireless router) one IP address. Also suppose that you have five PCs at home that use 802.11 to wirelessly connect to your wireless router. How are IP addresses assigned to the five PCs? Does the wireless router use NAT? Why or why not?
 
-- Each of the five PCs is hidden behind one public IP given to your home from the ISP. The PCs will all be assigned separate, unique private IP addresses. The wireless router will use NAT to inteface the private IPs with the rest of the internet. NAT allows the router to translate all incoming and outgoing IP addresses. This allows you to have many devices on private IP addresses all connected to the router.
+- Each of the five PCs is hidden behind one public IP given to your home from the ISP. The PCs will all be assigned separate, unique private IP addresses. The wireless router will use NAT to interface the private IPs with the rest of the internet. NAT allows the router to translate all incoming and outgoing IP addresses. This allows you to have many devices on private IP addresses all connected to the router.
 
 ***
 
