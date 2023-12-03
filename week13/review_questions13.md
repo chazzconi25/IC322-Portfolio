@@ -48,7 +48,7 @@ Another station may have been waiting to broadcast data while the original stati
 
 ### P7: Suppose an 802.11b station is configured to always reserve the channel with the RTS/CTS sequence. Suppose this station suddenly wants to transmit 1,500 bytes of data, and all other stations are idle at this time. As a function of SIFS and DIFS, and ignoring propagation delay and assuming no bit errors, calculate the time required to transmit the frame and receive the acknowledgement.
 
-1,500 bytes is one frame so one RTS/CTS sequence is needed to transfer the data. For every frame of data sent there is one DIFS period and three SIFS periods so the total time required to transmit the frame and receive the acknowledgment is: $DIFS + 3 * SIFS $.
+1,500 bytes is one frame so one RTS/CTS sequence is needed to transfer the data. For every frame of data sent there is one DIFS period and three SIFS periods so the total time required to transmit the frame and receive the acknowledgment is: $DIFS + 3 * SIFS$.
 
 ### P15: Consider Figure 6.33. Now we replace the router between subnets 1 and 2 with a switch S1, and label the router between subnets 2 and 3 as R1
 

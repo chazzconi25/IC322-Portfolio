@@ -84,7 +84,7 @@ About 0.16!
 
 ### Evaluate your strategy. Is it good? Why or why not?
 
-I liked this strategey becasue it was easy to implment and it beat my roommates send rate. I am not sure if you can get much better than this because I thought about doing things like polling or attaching headers to messages but all of that seemed like it would only have other drawbacks. In the end I think my strategy is best because its easy to implement and if you tried somthing harder you would only get the same result for more work.
+I liked this strategy because it was easy to implment and it beat my roommates send rate. I am not sure if you can get much better than this because I thought about doing things like polling or attaching headers to messages but all of that seemed like it would only have other drawbacks. In the end I think my strategy is best because its easy to implement and if you tried somthing harder you would only get the same result for more work.
 
 ### Are there any strategies you's like to implement, but you don't know how?
 
