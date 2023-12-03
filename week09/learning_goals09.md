@@ -12,12 +12,12 @@ The Link State algorithm calculates the least cost path between a source and a d
 
 #### Link State Advantages
 
-One advantage of link state is that it can be fast running at n^2 unoptimized and log(n) optimized. They are also reliable if oscillations are prevented using random link advertisement. 
+One advantage of link state is that it can be fast running at n^2 unoptimized and log(n) optimized. They are also reliable if oscillations are prevented using random link advertisement.
 
 #### Link State Common Problems
 
 One common problem in link state algorithms is oscillations. When link costs are not equal in both directions, the routers will continually route, and reroute packets in opposite directions. This is because as the packets each different routers they see different costs based on direction and assume new paths are cheaper resulting in oscilations.  
-![test](photos/p1.png)  
+![oscillations](photos/p1.png)  
 
 this problem can be solved by having routers randomly send out link advertisement of new routing paths so that the routers do not sync up and rotate back and forth between paths
 

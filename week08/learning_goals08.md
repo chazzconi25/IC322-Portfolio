@@ -6,11 +6,11 @@
 
 #### The Problem
 
-Under IPv4 there are not enough IP addresses for all devices. If every device on earth had its own IPv4 address there would be duplicate devices and subnets and packet delivery would be a mess.
+Under IPv4 there are not enough IP addresses for all devices. If every device on earth had its own IPv4 address there would be duplicate devices and subnets and packet delivery would be a mess. Routers would try to forward packets from one subnet to another and if their prefixes were the same then the routers forwarding tables, in conjunction with longest prefix matching, would have difficulty finding which host, or worse, subnet, the packet should be delivered to.
 
 #### The Solution
 
-The Gateway router to a subnet has an IPv4 address and is seen by the rest of the internet as a single host. The hosts within the subnet are allocated private IPv4 addresses. When the hosts send packets through the gateway router the router logs the orginal destiation and source information in its NAT table. It then routes the packets using its own IP as the source.- When a response is sent to the router it is retranslated into the private address of that host within the subnet.
+The Gateway router to a subnet has an IPv4 address and is seen by the rest of the internet as a single host. The hosts within the subnet are allocated private IPv4 addresses. When the hosts send packets through the gateway router the router logs the original destination and source information in its NAT table. It then routes the packets using its own IP as the source. When a response is sent to the router it is retranslated into the private address of that host within the subnet.
 
 ### I can explain important differences between IPv4 and IPv6
 
