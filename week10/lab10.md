@@ -12,7 +12,7 @@ Asked my roommate David Kreidler questions until I realzied my program doesn't w
 
 ### Process
 
-[icmp.py](Heres my code.) Huge waste of three hours.
+[Heres my code.](icmp.py) Huge waste of three hours.
 
 ```python
 from socket import *
