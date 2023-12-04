@@ -13,12 +13,12 @@ def checksum(data):
     countTo = (len(data) // 2) * 2
     count = 0
     while count < countTo:
-        thisVal = data[count+1] * 256 + data[count]
+        thisVal = ord(data[count+1]) * 256 + ord(data[count])
         csum += thisVal
         csum &= 0xffffffff
         count += 2
     if countTo < len(data):
-        csum += data[-1]
+        csum += ord(data[len(data) - 1])
         csum &= 0xffffffff
     csum = (csum >> 16) + (csum & 0xffff)
     csum += csum >> 16
