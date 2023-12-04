@@ -4,7 +4,7 @@
 
 ### How did you solve Chapter 3? Please copy and paste your winning strategy, and also explain it in English
 
-```python3
+```python
 # Welcome to the StellarScript Console!
 #
 # This time your single strategy will be run by all 6 drones instead of being

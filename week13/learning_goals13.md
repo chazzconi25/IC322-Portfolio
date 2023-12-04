@@ -53,7 +53,7 @@ Because of this collision avoidance is priotritized
 
 Steps to CSMA/CA
 
-1. If channel is idle station waits one Distributed Inter-frame Space (DIFS) 
+1. If channel is idle station waits one Distributed Inter-frame Space (DIFS)
 2. else station choses random backoff value using binary exponential backoff - only counts down value after DIFS and channel is idle
 2. When counter reaches 0 station transmits the entire fame and waits for ack
 3. If ack is received transmitting station knows frame reached dest if it has another frame to send then it goes through step 2 - else if no ack transmitting station goes back to step two as if it collided (larger backoff interval)
