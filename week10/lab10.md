@@ -13,6 +13,7 @@
 ### Questions
 
 Below is the output from running the program.
-```
+
+```text
 
 ```
