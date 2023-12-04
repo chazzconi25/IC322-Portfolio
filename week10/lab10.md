@@ -9,6 +9,7 @@ In this lab I wasted a ton of time trying to figure out ways around Ward halls c
 ### Collaboration
 
 Asked my roommate David Kreidler questions until I realzied my program doesn't work because ITSD doesn't let me have WSL2.
+[I also use ChatGPT to teach me everything I had questions on.](https://chat.openai.com/share/9f43d32e-5e6a-4e53-8f1b-312524accfea)
 
 ### Process
 
