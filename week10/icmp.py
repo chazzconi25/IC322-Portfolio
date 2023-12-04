@@ -39,8 +39,11 @@ def receiveOnePing(mySocket, ID, timeout, destAddr):
         recPacket, addr = mySocket.recvfrom(1024)
         #Fill in start
         #Fetch the ICMP header from the IP packet
+        # 160/ 8 = 20 bytes 
+        # header is 8 bytes long
         icmpHead = recPacket[20: 28]
-        icmp_type, icmp_code, icmp_checksum, icmp_identifier, icmp_sequence = struct.unpack('bbHHh', icmpHead)
+        #variable names copied from ChatGPT because I thought they were good and I understand how the code works
+        icmp_type, icmp_code, icmp_checksum, icmp_identifier, icmp_sequence = struct.unpack('!bbHHh', icmpHead)
          
         if icmp_type == 0 and icmp_code == 0 and icmp_identifier == ID:
             timeSent = struct.unpack('d', recPacket[28:36])[0]
