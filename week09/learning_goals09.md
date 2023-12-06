@@ -17,7 +17,7 @@ One advantage of link state is that it can be fast running at n^2 unoptimized an
 #### Link State Common Problems
 
 One common problem in link state algorithms is oscillations. When link costs are not equal in both directions, the routers will continually route, and reroute packets in opposite directions. This is because as the packets each different routers they see different costs based on direction and assume new paths are cheaper resulting in oscilations.  
-![oscillations](photos/p1.png)  
+![oscillations](photos/oscillations.PNG)  
 
 this problem can be solved by having routers randomly send out link advertisement of new routing paths so that the routers do not sync up and rotate back and forth between paths
 
@@ -37,7 +37,7 @@ Distance vector algorithm calculates the distance to every router from every rou
 
 Distance vector algorithms are advantageous because of their distributed, self stopping nature. Routers will only notify their neighbors when necessary, reducing network traffic. No central authority or message needs to let the routers know they should stop iterating.  
 
-![test](photos/p2.png)  
+![fast link update](photos/fastlinkupdate.PNG)  
 
 Distance vector is also good for ensuring that faster link updates are found and inputted into routing quickly. In the example above when y detects the cost change All that needs to happen next is z will update its table and send the information back to y but y already has the fastest costs so it doesn't need to update and all of the routers are updated in one loop.
 

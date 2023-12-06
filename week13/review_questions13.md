@@ -14,7 +14,7 @@ Higher SNR leads to lower BER. The base station can increase SNR by increasing i
 
 ### R10: Suppose nodes A, B, and C each attach to the same broadcast LAN (through their adapters). If A sends thousands of IP datagrams to B with each encapsulating frame addressed to the MAC address of B, will C’s adapter process these frames? If so, will C’s adapter pass the IP datagrams in these frames to the network layer C? How would your answers change if A sends frames with the MAC broadcast address?
 
-C will not process these frames because the link layer frame has the MAC address of A. If A sends the frames on the broadcast address C will process the frames and whent they are passed to the link network layer they will be discarded because they will be addressed to B's IP which does not match C's IP.
+C will not process these frames because the link layer frame has the MAC address of A. If A sends the frames on the broadcast address C will process the frames and When they are passed to the link network layer they will be discarded because they will be addressed to B's IP which does not match C's IP.
 
 ### R11: Why is an ARP query sent within a broadcast frame? Why is an ARP response sent within a frame with a specific destination MAC address?
 
