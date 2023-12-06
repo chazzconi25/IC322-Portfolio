@@ -23,7 +23,7 @@ this problem can be solved by having routers randomly send out link advertisemen
 
 #### Link State Example Protocol
 
-One example link state protocol is OSPF.
+One example link state protocol is OSPF. Primarily used for routing between ASs that directly addresses the issues of scale and administrative autonomy that exist between ASs
 
 ### I can describe how Distance Vector algorithms work, their advantages, their common problems and how the problems are addressed. I can also give an example of a protocol based on the Distance Vector algorithm
 
@@ -49,4 +49,12 @@ A solution to this is poisoned reverse. In this scenario when a router detects a
 
 #### Distance Vector algorithms Example Protocol
 
-One example distance vector protocol is RIP
+Some example distance vector protocols are RIP, BGP, ISO IDRP, Novell IPX and the original ARPAnet.
+
+RIP's benefits according to [Geeks for Geeks](https://www.geeksforgeeks.org/routing-information-protocol-rip/) pefrectly match he values of distance vector algorithms.
+Features of RIP include:
+
+1. Updates of the network are exchagned periodically.
+2. Updates are always broadcast.
+3. Full routing tables are sent in updates.
+4. Routers always trust routing information received from neighbor routers.
