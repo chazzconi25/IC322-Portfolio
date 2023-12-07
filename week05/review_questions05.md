@@ -20,6 +20,7 @@ False, the new value is one half of cwind.
 
 *Host B sends an acknowledgment whenever it receives a segment from Host A.*  
 **a.** In the second segment sent from Host A to B, what are the sequence number, source port number, and destination port number?  
+
 ```text
 Seq Number = 207
 Source Port = 302
