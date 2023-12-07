@@ -39,25 +39,23 @@ Here host B has sent out an ARP request for IP ```111.111.111.110``` and for an 
 
 ### I can explain CSMA/CA, how it differs from CSMA/CD, what problems it addresses, and how it solves them
 
-Random access protocol CSMA/CA
+CSMA/CA is a random access protocol, a subset of multiple access protocols. In a random access protocol transmitting nodes always use the full throughput of the channel. After transmitting during a collision CSMA/CA waits for a random time. While this is the same general operation as CSMA/CD there are some key differences
 
-CSMA = "carrier sense multiple access" - each station senses the channel before transmitting and refrains from trsnmitting when the channel is busy
+CSMA/CA or "Carrier Sense Multiple Access Collision Avoidance" is used because there are key differences between wifi and ethernet. In wifi there are high bit rate errors so it requires a link layer acknoledgment scheme. In ethernet collisions are detected and then the transmission must stop. This isnt possible in wifi because wifi cant detect collisions while sending. The incoming signal is too weak and it is costly to detect. Even if an adapter could listen and transmit wouldn't be able to detect all transmissions due to the hidden terminal problem. For these reasons a CSMA/CA provides a different random access framework with acknoledgments and without detection.
 
-Differences 1: wifi uses collision avoidance technqiues 2: high bit rate errors of wifi, wifi uses ARQ schene
+The bottom line differnece between CSMA/CA and CSMA/CD is that **entire frames are broadcast regardless of collision.** This situation forces wifi to prioritize avoiding collisions to begin with.
 
-In ethernet collisions are detected and then the transmission must stop. Doesn't happen in wifi because wifi cant detect collisions while sending (incoming signal too weak - costly to detect) and because even if an adapter could listen and transmit wouldn't be able to detect all transmissiond sue to the hidden terminal problem
+CSMA/CA avoids collisions by following these steps:
 
-ENTIRE FRAMES TRANSMITTED REGARDLESS OF NOISE AFTER BROADCAST STARTS
+1. If channel is idle station waits one Distributed Inter-frame Space (DIFS).
+2. If the channel is busy then the station choses a random backoff value using binary exponential backoff. This value only counts down after DIFS and if the channel is idle
+3. When counter reaches 0 station transmits the entire fame and waits for an ACK.
+4. If an ACK is received transmitting station knows frame reached its destination. If it has another frame to send then it goes through step 2. It specifically doesn't go to step 1 in case there is a hidden terminal and the station can't tell the channel is busy. If no ACK comes back the transmitting station goes back to step two as if it collided with a larger backoff interval.
 
-Because of this collision avoidance is priotritized
+One last element if CSMA/CA is RTS and CTS. If a terminal is hidden from other terminals then it has no way of sensing that the channel is busy and will broadcast/count down even when the channel is busy but it just cant hear the other station that is currently talking to the AP. In order to avoid these collisions stations must send a short Request to Send frame which includes the amount of time it will be transmitting for. The AP then gives the station explicit permission to send and lets other stations know they do not need to send via a Clear To Send control frame. These frames improve performance by eliminating the hidden station problem and limiting most collisions to short RTS and CTS frames because actual data transmission happens during reserved times.
 
-Steps to CSMA/CA
+![Hidden terminal](img/hiddenterminal.png)
 
-1. If channel is idle station waits one Distributed Inter-frame Space (DIFS)
-2. else station choses random backoff value using binary exponential backoff - only counts down value after DIFS and channel is idle
-2. When counter reaches 0 station transmits the entire fame and waits for ack
-3. If ack is received transmitting station knows frame reached dest if it has another frame to send then it goes through step 2 - else if no ack transmitting station goes back to step two as if it collided (larger backoff interval)
-
-RTS and CTS: if a terminal is hidden from other terminals then it has no way of sensing that the channel is busy and will broadcast/count down even when the channel is busy but it just cant hear the other station that is currently talkin to the AP. In order to avoid these collisions stations must send a short Request to Send frame which includes the amount of time it will be transmitting for. The AP then gives the station explicit permission to send and lets other stations know they do not need to send via a Clear To Send control frame. These frames improve preformance by eliminating the hidden station problem and limiting most collisions to short RTS and CTS frames because actual data transmission happens during reserved times.
+In the above picture Host A can hear the AP and the AP can hear it but Host A has no abilit to hear Host B so it is "hidden"
 
 RTS and CTS: Introduces delay and consumes channel resources. APs can set a threshold for what size of data frames require RTS/CTS. Typically this threshold is larger than the max frame size so RTS/CTS is always skipped.
