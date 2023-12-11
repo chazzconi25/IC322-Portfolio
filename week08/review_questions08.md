@@ -42,7 +42,7 @@ Ethernet adapter Ethernet:
 
 **a. Assign network addresses to each of these six subnets, with the following constraints: All addresses must be allocated from 214.17.254/23; Subnet A should have enough addresses to support 250 interfaces; Subnet B should have enough addresses to support 120 interfaces; and Subnet C should have enough addresses to support 120 interfaces. Of course, subnets D, E and F should each be able to support two interfaces. For each subnet, the assignment should take the form a.b.c.d/x or a.b.c.d/x – e.f.g.h/y.**  
 
-![test](photos/p15as.jpg)
+![problem 15 solution](img/p15as.jpg)
 
 **b. Using your answer to part (a), provide the forwarding tables (using longest prefix matching) for each of the three routers**
 Assume that each router letter corresponds to the subnet it is connected to. 
@@ -79,17 +79,17 @@ Assume that each router letter corresponds to the subnet it is connected to.
 | 198.48.64.0 - 198.48.78.255     |                                | 146.151.0.0 - 146.151.255.255    |
 | 66.96.66.128 - 66.96.66.143     |                                | 192.12.220.0 - 192.12.220.255    |
 | 69.91.192.0 - 69.91.255.255     |                                | 192.12.223.0 - 192.12.223.255    |
-                                  |                                | 192.12.224.0 - 192.12.224.255    |
-                                  |                                | 192.86.79.0 - 192.86.79.255      |
-                                  |                                | 198.133.224.0 - 198.133.224.255  |
-                                  |                                | 198.133.225.0 - 198.133.225.255  |
-                                  |                                | 198.51.246.0 - 198.51.246.255    |
-                                  |                                | 198.51.247.0 - 198.51.247.255    |
-                                  |                                | 198.51.254.0 - 198.51.254.255    |
-                                  |                                | 72.33.0.0 - 72.33.255.255        |
+|                                  |                                | 192.12.224.0 - 192.12.224.255    |
+|                                  |                                | 192.86.79.0 - 192.86.79.255      |
+|                                  |                                | 198.133.224.0 - 198.133.224.255  |
+|                                  |                                | 198.133.225.0 - 198.133.225.255  |
+|                                  |                                | 198.51.246.0 - 198.51.246.255    |
+|                                  |                                | 198.51.247.0 - 198.51.247.255    |
+|                                  |                                | 198.51.254.0 - 198.51.254.255    |
+|                                  |                                | 72.33.0.0 - 72.33.255.255        |
 
 When I used maxmind I found that the lower IPs had much more accuracy than higher ones. When i put in an IP from each school I was able to get the town and state of each universitty was well as an accuracy radius of 10-100 km to this does give some good location accuracy but I wouldn't say much on a smaller-than-state-scale. I should also note that some of the servers appear to be located near the universities but are a few towns over.
-![test](photos/p16s.png)
+![problem 16 image](img/p16s.png)
 
 ***
 
@@ -124,5 +124,5 @@ Subnet 192.168.0/24: (home network)
 
 For any set of sequential IPs you know that is one host. If you count the number of sets of sequentially occurring IPs you will know the number of hosts. For example if you see the IPs 156.65.216.1,156.65.216.2, 251.15.1.3, 156.65.216.3, 251.15.1.4, 251.15.1.5. There are clearly two hosts that started at IPs 156.65.216.1 and 251.15.1.3 and sequentially incremented their IP sources.
 
-**If the identification numbers are not sequentially assigned but randomly assigned, would your technique work? Justify your answer.**
+**If the identification numbers are not sequentially assigned but randomly assigned, would your technique work? Justify your answer.**  
 You would have no idea because all you would see are tons of random IPs coming out of the gateway router.
