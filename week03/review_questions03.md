@@ -55,14 +55,16 @@ Third party CDNs typically follow a philsophy of **Enter Deep** or **Bring Home*
 
 ### P16: How does SMTP mark the end of a message body? How about HTTP? Can HTTP use the same method as SMTP to mark the end of a message body? Explain.
 
-SMTP uses a line containing just a period to indicate the end of a line as indicated in the texbook example:
-```
+SMTP uses a line containing just a period to indicate the end of a line as indicated in the textbook example:
+
+```text
 S:  354 Enter mail, end with ”.” on a line by itself
 C:  Do you like ketchup?
 C:  How about pickles?
 C:  .
 S:  250 Message accepted for delivery
 ```
+
 HTTP uses a header that indicates the length of the message to end its body. HTTP cannot use just a period because SMTP is super old and based on ASCII-7 which is not compatible with HTTP.
 ***
 

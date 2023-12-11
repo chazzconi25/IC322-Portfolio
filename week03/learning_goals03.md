@@ -38,22 +38,27 @@ A resource record is a list known as a four-tuple that contains fields for name,
 <summary>Note, TTL is left out, click to see why</summary> Because it is the *time to live* of the resource record and is used for determing if a resource should be taken from a cache and the textbook didn't describe it so I dont know why I should have to if the literal PHDs of the book decided not to.
 </details>
 
-### I can explain the role of the SMTP, IMAP, and POP protocols in the email system.
+### I can explain the role of the SMTP, IMAP, and POP protocols in the email system
+
 #### SMTP - Simple Mail Transfer Protocol
+
 The primary usage of SMTP is to carry out the transfer of electronic mail from one mail server's outgoing message queue to another users mailbox on a different mail server. Mail servers are the core of email and SMTP connects them. SMTP uses TCP so that reliable data transfer is acheived between mail servers. SMTP does *not* use intermediate servers to transfer mail. This means that when a mail server is down, all mail sent to it will stay on the server of the sender.
 
 #### IMAP - Mail Access Protocol
+
 Email is made up of user agents, mail servers, and SMTP. SMTP facilitates the transmission of mail between mail servers. Once in a server or to get to a server a user uses a user agent like gmail. In order for the user to be able to view their inbox and send messages to be transfered to their outgoing message queue in the mail server the user agent needs to be able to communicate with the mail server. This is done through IMAP or HTTP and allows the user to manage folders and send mail from their user agent.
 
 > Apparenly IMAP is just as good as HTTP by the way so why would anyone waste their time with this junk. If you ask me I bet that IMAP isn't used by anyone and HTTP is way more common because its gmail. So me learning about this was a huge waste of time. Like fr, what kind of grandpa uses Outlook. Everything is in JS nowadays and normal people use gmail.
+
 #### POP - Post Office Protocol
+
 POP is just like IMAP in that it allows a user agent to communicate with the mail server. The major difference between IMAP and POP is that POP downloads entire emails while IMAP shows the message header before downloading. POP doesn't allow you to organize emails in your mail server mailbox while IMAP does. Finally, POP downloads emails and then deletes them while IMAP stores the email and then syncs it on multiple devices.
 
 > I dont believe it! Somehow they made something even worse than IMAP even thought HTTP which is perfectly good works. I guess POP is good if you have a tiny mail server because it delets the emails there but I doubt literally anyone ever has had that problem since the dinosaurs.
 
-*[Note that POP was not in the textbook as well so I found it on this website. ](https://www.plesk.com/wiki/aaaa-record/#:~:text=A%20and%20AAAA%20records%20are,corresponds%20to%20an%20IPv6%20address.)
+[Note that POP was not in the textbook as well so I found it on this website.](https://www.plesk.com/wiki/aaaa-record/#:~:text=A%20and%20AAAA%20records%20are,corresponds%20to%20an%20IPv6%20address.)
 
-### I know what each of the following tools are used for: nslookup, dig, whois.
+### I know what each of the following tools are used for: nslookup, dig, whois
 
 |   nslookup   |     dig*     |    whois*    |
 |--------------|-------------|-------------|
