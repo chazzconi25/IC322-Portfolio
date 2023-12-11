@@ -31,22 +31,8 @@ IPv6 changes by header field
 | Source and destination addresses | In IPv6 the headers are defined by [RFC 4291](https://datatracker.ietf.org/doc/html/rfc4291#section-2) as a string of eight hex digits separated by colons           |
 | Fragmentation and reassembly     | IPv6 doesn't not allow for fragmentation so if datagrams are too big the source and destination rely on "Packet Too Big" ICMP messages to resize packets accordingly |
 | Header checksum                  | Removed in IPv6 because the transport and link layers preform checksumming so it was overly redundant to keep checking on the network layer as well.                 |
-| Options                          | Removed in IPv6 to keep the header to 40 bytes fixed length and then the options could be added to the TCP or UDP header and accessed via the next header felid      |
+| Options                          | Removed in IPv6 to keep the header to 40 bytes fixed length and fixed length header that is significantly shorter than IPv4. The options could be added to the TCP or UDP header and accessed via the next header felid      |
 
-
-#### IPv4
-
-- 32 bit address
-- unicast and multicast addresses
-- Allows for fragmentation at intermediate routers
-- Checksum in header
-
-#### IPv6
-
-- 128 bit address
-- unicast, multicast, and anycast addresses
-- fixed length header that is significantly shorter than IPv4
-- No checksum
 
 ### I can explain how IPv6 datagrams can be sent over networks that only support IPv4
 
