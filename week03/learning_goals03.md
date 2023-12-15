@@ -2,11 +2,11 @@
 
 ## Learning Goals
 
-### I can explain how a the DNS system uses local, authoritative, TLD, and root servers to translate a domain name into an IP address.
+### I can explain how a the DNS system uses local, authoritative, TLD, and root servers to translate a domain name into an IP address
 
-The DNS system takes use of multiple layers of servers to prevent them having one point of failure of domain resolution, control the traffic volume of requests, allow wordlwide hosts to have a nearby server, and allows each individual layer of servers to be maintained individually to add new hosts. 
+The DNS system makes use of multiple layers of servers to prevent them having one point of failure of domain resolution, control the traffic volume of requests, allow worldwide hosts to have a nearby server, and allows each individual layer of servers to be maintained individually to add new hosts
 
-```
+```text
     Root Server
     3 ↑  | 4
       |  ↓
@@ -19,10 +19,13 @@ The DNS system takes use of multiple layers of servers to prevent them having on
       |  ↓8 
       Host
 ```
-The diagram above shows an example of how local, authoritative, TLD, and root servers can be used to translate a domain name into an IP address.<br>
-**(1)** Hosts request domain information from their local DNS server. **(2)** The local DNS server then requests an IP from the TLD server. **(3)** The TLD then requests from the root. **(4-5)** The host's request is then resolved here at the top of the diagram to an authorative DNS and IP information is passed down to an authoritative server. **(7-8)** The information is then resolved and passed back to the local server and then the host.
 
-### I can explain the role of each of the following DNS record types: A, AAAA, CNAME, MX, NS.
+The diagram above shows an example of how local, authoritative, TLD, and root servers can be used to translate a domain name into an IP address.  
+
+**(1)** Hosts request domain information from their local DNS server. **(2)** The local DNS server then requests an IP from the TLD server. **(3)** The TLD then requests from the root. **(4-5)** The host's request is then resolved here at the top of the diagram to an authoritative DNS and IP information is passed down to an authoritative server. **(7-8)** The information is then resolved and passed back to the local server and then the host.
+
+### I can explain the role of each of the following DNS record types: A, AAAA, CNAME, MX, NS
+
 A resource record is a list known as a four-tuple that contains fields for name, value, type, and TTL. For each of the following classes the values are named the same thing but have different meanings depending on the type. In the table below each record is listed at the top with a coinciding part of the four tuple listed on the left. The final row describes the role of the record type.
 
 |  Type |   A   |  NS | CNAME |   MX  |   AAAA*  |
@@ -32,10 +35,11 @@ A resource record is a list known as a four-tuple that contains fields for name,
 | Purpose |  Provides standard hostname-to-IP mapping | Provides directions to DNS queries to move them further along the query chain | Provides querying hosts the canonical name for a host name. Used by DNS clients to acces any canonical name for a server that isnt a mail server | Primarily used for company's that need to have an alias name for its mail server and for its web server. DNS clients can query for this record to get the canonical name of the mail server | Essentially the same as A records but for IPv6 where A is for IPv4 |
 
 
-*[Note that the informaton for AAAA was not in the textbook** so I found it on this website. ](https://www.plesk.com/wiki/aaaa-record/#:~:text=A%20and%20AAAA%20records%20are,corresponds%20to%20an%20IPv6%20address.)
+[Note that the informaton for AAAA was not in the textbook so I found it on this website.](https://www.plesk.com/wiki/aaaa-record/#:~:text=A%20and%20AAAA%20records%20arecorresponds%20to%20an%20IPv6%20address.)
 <!---**because screw me right!---->
+
 <details>
-<summary>Note, TTL is left out, click to see why</summary> Because it is the *time to live* of the resource record and is used for determing if a resource should be taken from a cache and the textbook didn't describe it so I dont know why I should have to if the literal PHDs of the book decided not to.
+<summary>Note, TTL is left out, click to see why</summary> Because it is the *time to live* of the resource record and is used for determining if a resource should be taken from a cache and the textbook didn't describe it so I dont know why I should have to if the literal PHDs of the book decided not to.
 </details>
 
 ### I can explain the role of the SMTP, IMAP, and POP protocols in the email system
@@ -62,6 +66,6 @@ POP is just like IMAP in that it allows a user agent to communicate with the mai
 
 |   nslookup   |     dig*     |    whois*    |
 |--------------|-------------|-------------|
-| Used to send a DNS query to any DNS server at any level. After sending the command displays all of the records that were included in the reply.  | DNS lookup utility that preforms DNS lookus and displays the answers that are returned from the name servers that were queried.  | "whois searches for an object in a RFC 3912 database. This version of the whois client tries to guess the right server to ask for the specified object. If no guess can be  made  it  will  connect  to  whois.networksolutions.com  for  NIC  handles  or whois.arin.net for IPv4 addresses and network names." - the unix man pages |
+| Used to send a DNS query to any DNS server at any level. After sending the command displays all of the records that were included in the reply.  | DNS lookup utility that preforms DNS lookups and displays the answers that are returned from the name servers that were queried.  | "whois searches for an object in a RFC 3912 database. This version of the whois client tries to guess the right server to ask for the specified object. If no guess can be  made  it  will  connect  to  whois.networksolutions.com  for  NIC  handles  or whois.arin.net for IPv4 addresses and network names." - the unix man pages |
 
 > *Once again, not in the textbook! Got this from the man pages. Very annoying!

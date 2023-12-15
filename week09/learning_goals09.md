@@ -4,7 +4,7 @@
 
 ### I can describe how Link State algorithms work, their advantages, their common problems and how the problems are addressed. I can also give an example of a protocol based on the Link State algorithm
 
-Link state algorithms are centralized routing algorithms, meaning that they require complete, global knowledge of the entire network before they can be run. The calculation is then run from on machine and distributed to all routers or run in each router individually. Typically, all routers receive the global knowledge via link-state broadcasts containing identities and costs of links to all other routers.
+Link state algorithms are centralized routing algorithms, meaning that they require complete, global knowledge of the entire network before they can be run. The calculation is then run from one machine and distributed to all routers or run in each router individually. Typically, all routers receive the global knowledge via link-state broadcasts containing identities and costs of links to all other routers.
 
 #### Link State Function
 
