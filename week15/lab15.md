@@ -18,7 +18,8 @@ Legally the hack had implications abroad and in the US. The FBI would later dete
 
 The domino of successive errors that enabled this attack are dwarfed by the ethical implications of the fallout from the hack. As a consumer reporting agency or CRA Equifax, collects data on hundreds of people in order to see this information to a multitude of private and public institutions for insights into potential customers or employees. In many cases this data is not authorized to be collected by the people it pertains to and worse it includes PII like home address, Social Security Number, age, and nationality. With data that is so volatile and collected without explicit authorization of those it pertaions to there is an obvious need for careful handling of the data. Unfortunately it is clear the Equifax did not take the steps neccissary to not only prevent an inital intrusion into their databases but also oermitted the intrusion to expand and sustain itself. Since the hack Equifax has paid settlements to many who were effected and updated their data storage policies but these reactionary changes should have been initally implacted given the ethical duty bound to the volitility of the data they held.
 
-#### Sources:  
+#### Sources:
+
 [GAO Equifax report](https://www.gao.gov/assets/gao-18-559.pdf)  
 [WSJ indictment of Chinese hackers](https://www.wsj.com/articles/four-members-of-china-s-military-indicted-for-massive-equifax-breach-11581346824)  
 [Explanation of out of date certificate](https://www.thesslstore.com/blog/the-equifax-data-breach-went-undetected-for-76-days-because-of-an-expired-certificate/)  

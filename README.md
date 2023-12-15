@@ -13,7 +13,8 @@ I'm maintaining this Portfolio for IC322: Computer Networks. If you're visiting,
 9. [Week Nine: Network Layer: Control Plane](/week09/)
 10. [Week Ten: Network Layer: More Control Plane](/week10/)
 11. [Week Eleven: Review](/week11/)
-
-> Debt Clock: 1.5 weeks
+12. [Week Twelve: Link Layer](/week12/)
+13. [Week Thirteen: More Link Layer](week13)
+14. [Week Fifteen: TLS and Network Security](week14)
 
 *l'ennemi du bien est le bien* -Volitare  
