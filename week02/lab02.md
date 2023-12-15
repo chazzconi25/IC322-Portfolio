@@ -52,6 +52,7 @@ Content-Length: 371\r\n
 
 9. Inspect the contents of the server response. Did the server explicitly return the contents of the file? How can you tell?
 - The server did return the contents of the file, I can tell becauese I can see the data attached to the response after the header.
+
 ```html
 <html><br>
     Congratulations again!  Now you've downloaded the file lab2-2.html. <br>
