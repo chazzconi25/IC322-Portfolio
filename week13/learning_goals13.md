@@ -56,6 +56,6 @@ One last element if CSMA/CA is RTS and CTS. If a terminal is hidden from other t
 
 ![Hidden terminal](img/hiddenterminal.png)
 
-In the above picture Host A can hear the AP and the AP can hear it but Host A has no abilit to hear Host B so it is "hidden"
+In the above picture Host A can hear the AP and the AP can hear it but Host A has no ability to hear Host B so it is "hidden"
 
 RTS and CTS: Introduces delay and consumes channel resources. APs can set a threshold for what size of data frames require RTS/CTS. Typically this threshold is larger than the max frame size so RTS/CTS is always skipped.

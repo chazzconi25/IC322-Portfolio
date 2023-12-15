@@ -88,7 +88,7 @@ y |
  \ /
 ```
 
-By using this scheme parity can be used to detect up to two errors and correct up to one error. This is critical to ensuring both the correct message is received and can be quickly fixed. In the context of the link layer over Ethernet errors are very small with $10^-10$ BER in gigabit Ethernet so this is somewhat effective.
+By using this scheme parity can be used to detect up to two errors and correct up to one error. This is critical to ensuring both the correct message is received and can be quickly fixed. In the context of the link layer over Ethernet errors are very small with $10^{-10}$ BER in gigabit Ethernet so this is somewhat effective.
 
 ```text
 CORRECTING ONE ERROR BIT:
@@ -130,7 +130,7 @@ $$R=remainder\frac{D*2^r}{G}$$
 International standards are defined for 8-,12-,16- and 23-bit G. The 32-bit CRC standard is most prevalant in link layer protocols and uses the following generator:
 $$G_{CRC-32} = 100000100110000010001110110110111$$
 
-In CRC because of the way the math works CRC can detect burst errors fo fewer than $r + 1$ bits. It can also detect errors of greater than $r + 1$ with a probability $1 -0.5^r$ and any odd number of bit errors.
+In CRC because of the way the math works CRC can detect burst errors of fewer than $r + 1$ bits. It can also detect errors of greater than $r + 1$ with a probability $1 -0.5^r$ and any odd number of bit errors.
 
 Example CRC $D = 0110100011$ --> $R = 0001$
 
