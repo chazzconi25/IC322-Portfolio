@@ -57,11 +57,10 @@ ssh-ed25519 SomeRandomStringOfNumbersAndLettersHere academy\m25XXXX@WK5CG1234B34
 
 ## Add Public key to Github
 
-
 ## Add Public key to Gitlab
 
 1. First log into [Gitlab](https://gitlab.com/). If you have a USNA Gitlab account it will not work for Gitlab because life is hell. You will need a Gitlab account even if you have a USNA gitlab account because sometimes people put things on either as a practical joke and if you don't have both set up you will be screwed.
-2. Click on your disguising profile photo and click "Preferences". ![Gitlab](/img/gitlab_user_prefrences.png)
+2. Click on your disguising profile photo and click "Preferences". ![Gitlab](img/gitlab_user_prefrences.png)
 3. Click SSH Keys on the left side bar. ![Gitlab](/img/gitlab_user_prefrences.png)
 4. Click "Add new key". ![Gitlab](/img/gitlab_ssh_keys_page.png)
 5. Paste your SSH public key in the box that says "Key" and click the blue "Add key button"![Gitlab](/img/gitlab_add_key.png)
